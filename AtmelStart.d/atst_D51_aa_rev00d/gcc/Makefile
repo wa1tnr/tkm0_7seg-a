@@ -202,6 +202,9 @@ endif
 $(SUB_DIRS):
 	$(MK_DIR) "$@"
 
+install:
+	./scripts/_bossac_local.sh ./AtmelStart.bin
+
 clean:
 	rm -f $(OBJS_AS_ARGS)
 	rm -f $(OUTPUT_FILE_PATH)
