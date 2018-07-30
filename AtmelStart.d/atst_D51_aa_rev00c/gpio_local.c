@@ -1,6 +1,8 @@
 #include "driver_init.h" // gives atmel_start_pins.h for D13 and such
 // #include <peripheral_clk_config.h> // modified  -  wa1tnr 27 JUL 2018
-// #include <utils.h>
+
+// #include <utils.h> // Haven't tried to enable this - 30 July 18:17 UTC
+
 // #include <hal_init.h>
 // #include <hpl_gclk_base.h>
 // #include <hpl_pm_base.h>
@@ -11,12 +13,12 @@ void init_act_LED(void) {
 
 /*
  26 void init_act_LED(void) { // PIN_ACTIVITY_LED
- 27 //    gpio_init(PORTA, PIN_ACTIVITY_LED, 1); // PA17
+ 27 //    gpio_init(PORTA, PIN_ACTIVITY_LED, 1); // PA23
  28 }
 */
 
 void raise_D13(void) {
-	// GPIO on PA17
+	// GPIO on PA23
 
 	// Set pin direction to output
 	// gpio_set_pin_direction(D13, GPIO_DIRECTION_OUT);
@@ -32,7 +34,7 @@ void raise_D13(void) {
 }
 
 void lower_D13(void) {
-	// GPIO on PA17
+	// GPIO on PA23
 
 	// Set pin direction to output
 	// gpio_set_pin_direction(D13, GPIO_DIRECTION_OUT);
