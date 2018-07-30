@@ -1,0 +1,46 @@
+aha - a lot more in this diff than expected.
+
+Maybe asked SAMD51 to do too many 'interesting' things
+for a Hello World LED blinkie.
+
+20:14 UTC Monday 30 July 2018
+
+37d36
+< hpl/sercom \
+58d56
+< hal/src/hal_usart_sync.o \
+64d61
+< gpio_local.o \
+68d64
+< hpl/sercom/hpl_sercom.o \
+88d83
+< "hal/src/hal_usart_sync.o" \
+94d88
+< "gpio_local.o" \
+98d91
+< "hpl/sercom/hpl_sercom.o" \
+124d116
+< "hal/src/hal_usart_sync.d" \
+129d120
+< "gpio_local.d" \
+132d122
+< "hpl/sercom/hpl_sercom.d" \
+183c173
+< -I"../" -I"../config" -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/core" -I"../hpl/dmac" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hri" -I"../" -I"../CMSIS/Include" -I"../include"  \
+---
+> -I"../" -I"../config" -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/core" -I"../hpl/dmac" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hri" -I"../" -I"../CMSIS/Include" -I"../include"  \
+192c182
+< -I"../" -I"../config" -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/core" -I"../hpl/dmac" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hri" -I"../" -I"../CMSIS/Include" -I"../include"  \
+---
+> -I"../" -I"../config" -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/core" -I"../hpl/dmac" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hri" -I"../" -I"../CMSIS/Include" -I"../include"  \
+201c191
+< -I"../" -I"../config" -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/core" -I"../hpl/dmac" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hri" -I"../" -I"../CMSIS/Include" -I"../include"  \
+---
+> -I"../" -I"../config" -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/core" -I"../hpl/dmac" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hri" -I"../" -I"../CMSIS/Include" -I"../include"  \
+214,217d203
+< 
+< 
+< install:
+< 	./scripts/_bossac_local.sh ./AtmelStart.bin
+
+$ diff xMakefile Makefile
