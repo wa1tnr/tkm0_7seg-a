@@ -18,3 +18,5 @@ gcc/hpl/
 gcc/main.d
 gcc/main.o
 gcc/samd21a/
+gcc/gcc/system_samd51.d
+gcc/gcc/system_samd51.o
