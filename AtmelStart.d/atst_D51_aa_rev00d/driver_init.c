@@ -25,7 +25,7 @@ void system_init(void)
 	                   // <id> pad_initial_level
 	                   // <false"> Low
 	                   // <true"> High
-	                   false);
+	                   true); // please
 
-	gpio_set_pin_function(D13, GPIO_PIN_FUNCTION_OFF);
+	// gpio_set_pin_function(D13, GPIO_PIN_FUNCTION_OFF); // would turn that pin off
 }
