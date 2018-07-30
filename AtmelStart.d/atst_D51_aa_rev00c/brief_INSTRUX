@@ -1,0 +1,5 @@
+
+ cd gcc ; use Makefile there.
+
+targets: make clean  or make or make install
+
