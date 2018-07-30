@@ -79,18 +79,26 @@ Proven SAMD51 Hardware
 SAMD51 hardware itself loads and runs my Forth (on the TX/RX UART
 pair for Serial.print() statements via the CP2104 USB<==>UART
 gateway chip).
-_
+
 I use the PiUART for this; very simple three wire interface,
 including Ground).
 
 So, I can validate the Feather M4 Express hardware in the 
 Arduino IDE -- but cannot get a GPIO pin to toggle under the
-Atmel Start generated code -- no pin toggle on D13 (PA23)l.
+Atmel Start generated code -- no pin toggle on D13 (PA23).
 
 I can (and have) generated good Atmel Start code for SAMD21,
 which does toggle GPIO pins easily.
 
-I even have a working Dotstar drive I wrote (bit-banged) for
+I even have a working Dotstar driver I wrote (bit-banged) for
 the Pimoroni Blinkt! 8x APA102 array!
+
+
+Approaches
+~~~~~~~~~~
+
+  * BOSSAC command line arguments, versions
+  * missing include files (compiles fine, but, yanno..)
+  * Simplify code and remove legacy cruft not presently needed (the dotstar stuff)
 
 END.
