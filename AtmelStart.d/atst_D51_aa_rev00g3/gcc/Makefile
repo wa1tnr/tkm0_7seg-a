@@ -153,6 +153,9 @@ all: $(SUB_DIRS) $(OUTPUT_FILE_PATH)
 
 # Linker target
 
+# -T"../gcc/gcc/samd51j19a_flash_with_bootloader.ld" \
+# -T"../gcc/gcc/samd51j19a_sram.ld" \
+
 $(OUTPUT_FILE_PATH): $(OBJS)
 	@echo Building target: $@
 	@echo Invoking: ARM/GNU Linker
