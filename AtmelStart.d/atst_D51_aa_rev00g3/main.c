@@ -9,15 +9,13 @@
 
 void uSec(void) {
     for (volatile int i = 1; i < 2; i++) { // needs calibration
-        delay_ms(2); // wide pulse
-        // no secondary clock maybe no milliseconds; can't afford this affordance:
         // nothing
     }
 }
 
 void short_timer(void) { // human blinkie timescale
     uint32_t on_time  = 2140111222; // it's 2147 something ;)
-    for(on_time = 21401122; on_time > 0; on_time--) {
+    for(on_time =       21401122; on_time > 0; on_time--) { // 21.4 million
         uSec();
     }
 }
