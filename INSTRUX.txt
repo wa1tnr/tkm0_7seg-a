@@ -1,0 +1,5 @@
+ $ cd sandboxx/
+ $ cd Current.d
+ $ cd `/bin/pwd`
+ $ cd gcc
+ $ make clean ; sleep 4 ; make ; sleep 4 ; make install
