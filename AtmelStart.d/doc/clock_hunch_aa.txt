@@ -1,0 +1,5 @@
+This is a hunch based on the SAMD51 schematic showing a
+crystal for the same value (32 KHz - in an exact power of two)
+and a lasting impression of a '48 MHz clock'.
+
+32768 - 1 = 32767 (zero-based).
