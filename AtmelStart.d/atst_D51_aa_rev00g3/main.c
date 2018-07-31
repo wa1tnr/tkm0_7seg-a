@@ -1,9 +1,13 @@
-#include <atmel_start.h>
-#include "driver_examples.h"
-#include "driver_init.h"
-#include "utils.h"
-#include "gpio_local.h"
+// Tue Jul 31 13:45:08 UTC 2018
 
+// main.c
+
+// #include <atmel_start.h>
+// #include "driver_examples.h"
+// #include "driver_init.h"
+// #include "utils.h"
+#include "atmel_start.h"
+#include "gpio_local.h"
 
 /* Many changes: by wa1tnr, July 2018 */
 
