@@ -22,3 +22,4 @@ gcc/gcc/system_samd51.d
 gcc/gcc/system_samd51.o
 gcc/gcc/gcc/startup_samd51.d
 gcc/gcc/gcc/startup_samd51.o
+PRIVATE
