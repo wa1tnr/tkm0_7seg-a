@@ -1,0 +1,780 @@
+
+AtmelStart.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000062c  00004000  00004000  00004000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .relocate     00000004  20000000  0000462c  00010000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bkupram      00000000  47000000  47000000  00010004  2**0
+                  CONTENTS
+  3 .qspi         00000000  04000000  04000000  00010004  2**0
+                  CONTENTS
+  4 .bss          00000030  20000004  00004630  00010004  2**2
+                  ALLOC
+  5 .stack        0000c004  20000034  00004660  00010004  2**0
+                  ALLOC
+  6 .ARM.attributes 0000002e  00000000  00000000  00010004  2**0
+                  CONTENTS, READONLY
+  7 .comment      0000007f  00000000  00000000  00010032  2**0
+                  CONTENTS, READONLY
+  8 .debug_info   00009222  00000000  00000000  000100b1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_abbrev 00001021  00000000  00000000  000192d3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00001856  00000000  00000000  0001a2f4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_aranges 000001e8  00000000  00000000  0001bb4a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000370  00000000  00000000  0001bd32  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_macro  0000248d  00000000  00000000  0001c0a2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_line   00003a66  00000000  00000000  0001e52f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_str    000dfd52  00000000  00000000  00021f95  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .debug_frame  000004bc  00000000  00000000  00101ce8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00004000 <exception_table>:
+    4000:	38 c0 00 20 25 43 00 00 21 43 00 00 21 43 00 00     8.. %C..!C..!C..
+    4010:	21 43 00 00 21 43 00 00 21 43 00 00 00 00 00 00     !C..!C..!C......
+	...
+    402c:	21 43 00 00 21 43 00 00 00 00 00 00 21 43 00 00     !C..!C......!C..
+    403c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    404c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    405c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    406c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    407c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    408c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    409c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    40ac:	21 43 00 00 21 43 00 00 a5 42 00 00 d1 42 00 00     !C..!C...B...B..
+    40bc:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    40cc:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    40dc:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    40ec:	21 43 00 00 00 00 00 00 e9 42 00 00 21 43 00 00     !C.......B..!C..
+    40fc:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    410c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    411c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    412c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    413c:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    414c:	21 43 00 00 21 43 00 00 21 43 00 00 00 00 00 00     !C..!C..!C......
+	...
+    4180:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    4190:	00 00 00 00 21 43 00 00 21 43 00 00 21 43 00 00     ....!C..!C..!C..
+    41a0:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    41b0:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    41c0:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    41d0:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    41e0:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    41f0:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    4200:	21 43 00 00 00 00 00 00 00 00 00 00 21 43 00 00     !C..........!C..
+    4210:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    4220:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    4230:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    4240:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    4250:	21 43 00 00 21 43 00 00 21 43 00 00 21 43 00 00     !C..!C..!C..!C..
+    4260:	00 00 00 00                                         ....
+
+00004264 <__do_global_dtors_aux>:
+    4264:	b510      	push	{r4, lr}
+    4266:	4c05      	ldr	r4, [pc, #20]	; (427c <__do_global_dtors_aux+0x18>)
+    4268:	7823      	ldrb	r3, [r4, #0]
+    426a:	b933      	cbnz	r3, 427a <__do_global_dtors_aux+0x16>
+    426c:	4b04      	ldr	r3, [pc, #16]	; (4280 <__do_global_dtors_aux+0x1c>)
+    426e:	b113      	cbz	r3, 4276 <__do_global_dtors_aux+0x12>
+    4270:	4804      	ldr	r0, [pc, #16]	; (4284 <__do_global_dtors_aux+0x20>)
+    4272:	f3af 8000 	nop.w
+    4276:	2301      	movs	r3, #1
+    4278:	7023      	strb	r3, [r4, #0]
+    427a:	bd10      	pop	{r4, pc}
+    427c:	20000004 	.word	0x20000004
+    4280:	00000000 	.word	0x00000000
+    4284:	0000462c 	.word	0x0000462c
+
+00004288 <frame_dummy>:
+    4288:	b508      	push	{r3, lr}
+    428a:	4b03      	ldr	r3, [pc, #12]	; (4298 <frame_dummy+0x10>)
+    428c:	b11b      	cbz	r3, 4296 <frame_dummy+0xe>
+    428e:	4903      	ldr	r1, [pc, #12]	; (429c <frame_dummy+0x14>)
+    4290:	4803      	ldr	r0, [pc, #12]	; (42a0 <frame_dummy+0x18>)
+    4292:	f3af 8000 	nop.w
+    4296:	bd08      	pop	{r3, pc}
+    4298:	00000000 	.word	0x00000000
+    429c:	20000008 	.word	0x20000008
+    42a0:	0000462c 	.word	0x0000462c
+
+000042a4 <NVMCTRL_0_Handler>:
+/**
+ * \internal NVM 0 interrupt handler
+ */
+void NVMCTRL_0_Handler(void)
+{
+	_nvm_interrupt_handler(_nvm_dev);
+    42a4:	4b09      	ldr	r3, [pc, #36]	; (42cc <NVMCTRL_0_Handler+0x28>)
+    42a6:	6818      	ldr	r0, [r3, #0]
+	void *const hw = device->hw;
+    42a8:	6903      	ldr	r3, [r0, #16]
+	((Nvmctrl *)hw)->INTENCLR.reg = mask;
+}
+
+static inline bool hri_nvmctrl_get_INTFLAG_DONE_bit(const void *const hw)
+{
+	return (((Nvmctrl *)hw)->INTFLAG.reg & NVMCTRL_INTFLAG_DONE) >> NVMCTRL_INTFLAG_DONE_Pos;
+    42aa:	8a1a      	ldrh	r2, [r3, #16]
+	if (hri_nvmctrl_get_INTFLAG_DONE_bit(hw)) {
+    42ac:	07d2      	lsls	r2, r2, #31
+    42ae:	d504      	bpl.n	42ba <NVMCTRL_0_Handler+0x16>
+}
+
+static inline void hri_nvmctrl_clear_INTFLAG_DONE_bit(const void *const hw)
+{
+	((Nvmctrl *)hw)->INTFLAG.reg = NVMCTRL_INTFLAG_DONE;
+    42b0:	2201      	movs	r2, #1
+    42b2:	821a      	strh	r2, [r3, #16]
+		if (NULL != device->flash_cb.ready_cb) {
+    42b4:	6803      	ldr	r3, [r0, #0]
+		if (NULL != device->flash_cb.error_cb) {
+    42b6:	b143      	cbz	r3, 42ca <NVMCTRL_0_Handler+0x26>
+			device->flash_cb.error_cb(device);
+    42b8:	4718      	bx	r3
+	return tmp;
+}
+
+static inline hri_nvmctrl_intflag_reg_t hri_nvmctrl_read_INTFLAG_reg(const void *const hw)
+{
+	return ((Nvmctrl *)hw)->INTFLAG.reg;
+    42ba:	8a1a      	ldrh	r2, [r3, #16]
+    42bc:	b292      	uxth	r2, r2
+	} else if (hri_nvmctrl_read_INTFLAG_reg(hw) && ~NVMCTRL_INTFLAG_ERR) {
+    42be:	b122      	cbz	r2, 42ca <NVMCTRL_0_Handler+0x26>
+}
+
+static inline void hri_nvmctrl_clear_INTFLAG_reg(const void *const hw, hri_nvmctrl_intflag_reg_t mask)
+{
+	((Nvmctrl *)hw)->INTFLAG.reg = mask;
+    42c0:	f240 225e 	movw	r2, #606	; 0x25e
+    42c4:	821a      	strh	r2, [r3, #16]
+		if (NULL != device->flash_cb.error_cb) {
+    42c6:	6843      	ldr	r3, [r0, #4]
+    42c8:	e7f5      	b.n	42b6 <NVMCTRL_0_Handler+0x12>
+}
+    42ca:	4770      	bx	lr
+    42cc:	20000020 	.word	0x20000020
+
+000042d0 <NVMCTRL_1_Handler>:
+    42d0:	4b00      	ldr	r3, [pc, #0]	; (42d4 <NVMCTRL_1_Handler+0x4>)
+    42d2:	4718      	bx	r3
+    42d4:	000042a5 	.word	0x000042a5
+
+000042d8 <SystemInit>:
+ *         Initialize the System and update the SystemCoreClock variable.
+ */
+void SystemInit(void)
+{
+	// Keep the default device state after reset
+	SystemCoreClock = __SYSTEM_CLOCK;
+    42d8:	4b01      	ldr	r3, [pc, #4]	; (42e0 <SystemInit+0x8>)
+    42da:	4a02      	ldr	r2, [pc, #8]	; (42e4 <SystemInit+0xc>)
+    42dc:	601a      	str	r2, [r3, #0]
+	return;
+}
+    42de:	4770      	bx	lr
+    42e0:	20000000 	.word	0x20000000
+    42e4:	02dc6c00 	.word	0x02dc6c00
+
+000042e8 <RAMECC_Handler>:
+	return tmp;
+}
+
+static inline hri_ramecc_intflag_reg_t hri_ramecc_read_INTFLAG_reg(const void *const hw)
+{
+	return ((Ramecc *)hw)->INTFLAG.reg;
+    42e8:	4a0b      	ldr	r2, [pc, #44]	; (4318 <RAMECC_Handler+0x30>)
+    42ea:	7893      	ldrb	r3, [r2, #2]
+
+/**
+ * \internal RAMECC interrupt handler
+ */
+void RAMECC_Handler(void)
+{
+    42ec:	b082      	sub	sp, #8
+    42ee:	b2db      	uxtb	r3, r3
+	struct _ramecc_device *dev      = (struct _ramecc_device *)&device;
+	volatile uint32_t      int_mask = hri_ramecc_read_INTFLAG_reg(RAMECC);
+    42f0:	9301      	str	r3, [sp, #4]
+
+	if (int_mask & RAMECC_INTFLAG_DUALE && dev->ramecc_cb.dual_bit_err) {
+    42f2:	9b01      	ldr	r3, [sp, #4]
+    42f4:	0799      	lsls	r1, r3, #30
+    42f6:	d505      	bpl.n	4304 <RAMECC_Handler+0x1c>
+    42f8:	4b08      	ldr	r3, [pc, #32]	; (431c <RAMECC_Handler+0x34>)
+    42fa:	681b      	ldr	r3, [r3, #0]
+    42fc:	b113      	cbz	r3, 4304 <RAMECC_Handler+0x1c>
+	return tmp;
+}
+
+static inline hri_ramecc_erraddr_reg_t hri_ramecc_read_ERRADDR_reg(const void *const hw)
+{
+	return ((Ramecc *)hw)->ERRADDR.reg;
+    42fe:	6850      	ldr	r0, [r2, #4]
+	} else if (int_mask & RAMECC_INTFLAG_SINGLEE && dev->ramecc_cb.single_bit_err) {
+		dev->ramecc_cb.single_bit_err((uint32_t)hri_ramecc_read_ERRADDR_reg(RAMECC));
+	} else {
+		return;
+	}
+}
+    4300:	b002      	add	sp, #8
+		dev->ramecc_cb.single_bit_err((uint32_t)hri_ramecc_read_ERRADDR_reg(RAMECC));
+    4302:	4718      	bx	r3
+	} else if (int_mask & RAMECC_INTFLAG_SINGLEE && dev->ramecc_cb.single_bit_err) {
+    4304:	9b01      	ldr	r3, [sp, #4]
+    4306:	07db      	lsls	r3, r3, #31
+    4308:	d504      	bpl.n	4314 <RAMECC_Handler+0x2c>
+    430a:	4b04      	ldr	r3, [pc, #16]	; (431c <RAMECC_Handler+0x34>)
+    430c:	685b      	ldr	r3, [r3, #4]
+    430e:	b10b      	cbz	r3, 4314 <RAMECC_Handler+0x2c>
+    4310:	4a01      	ldr	r2, [pc, #4]	; (4318 <RAMECC_Handler+0x30>)
+    4312:	e7f4      	b.n	42fe <RAMECC_Handler+0x16>
+}
+    4314:	b002      	add	sp, #8
+    4316:	4770      	bx	lr
+    4318:	41020000 	.word	0x41020000
+    431c:	20000024 	.word	0x20000024
+
+00004320 <Dummy_Handler>:
+
+/**
+ * \brief Default interrupt handler for unused IRQs.
+ */
+void Dummy_Handler(void)
+{
+    4320:	e7fe      	b.n	4320 <Dummy_Handler>
+	...
+
+00004324 <Reset_Handler>:
+{
+    4324:	b508      	push	{r3, lr}
+	if (pSrc != pDest) {
+    4326:	4a14      	ldr	r2, [pc, #80]	; (4378 <Reset_Handler+0x54>)
+    4328:	4b14      	ldr	r3, [pc, #80]	; (437c <Reset_Handler+0x58>)
+    432a:	429a      	cmp	r2, r3
+    432c:	d003      	beq.n	4336 <Reset_Handler+0x12>
+		for (; pDest < &_erelocate;) {
+    432e:	4914      	ldr	r1, [pc, #80]	; (4380 <Reset_Handler+0x5c>)
+    4330:	3a04      	subs	r2, #4
+    4332:	428b      	cmp	r3, r1
+    4334:	d318      	bcc.n	4368 <Reset_Handler+0x44>
+{
+    4336:	4b13      	ldr	r3, [pc, #76]	; (4384 <Reset_Handler+0x60>)
+	for (pDest = &_szero; pDest < &_ezero;) {
+    4338:	4a13      	ldr	r2, [pc, #76]	; (4388 <Reset_Handler+0x64>)
+		*pDest++ = 0;
+    433a:	2100      	movs	r1, #0
+	for (pDest = &_szero; pDest < &_ezero;) {
+    433c:	4293      	cmp	r3, r2
+    433e:	d318      	bcc.n	4372 <Reset_Handler+0x4e>
+	SCB->VTOR = ((uint32_t)pSrc & SCB_VTOR_TBLOFF_Msk);
+    4340:	4a12      	ldr	r2, [pc, #72]	; (438c <Reset_Handler+0x68>)
+    4342:	4b13      	ldr	r3, [pc, #76]	; (4390 <Reset_Handler+0x6c>)
+    4344:	f022 027f 	bic.w	r2, r2, #127	; 0x7f
+    4348:	609a      	str	r2, [r3, #8]
+	SCB->CPACR |= (0xFu << 20);
+    434a:	f8d3 2088 	ldr.w	r2, [r3, #136]	; 0x88
+    434e:	f442 0270 	orr.w	r2, r2, #15728640	; 0xf00000
+    4352:	f8c3 2088 	str.w	r2, [r3, #136]	; 0x88
+  \details Acts as a special kind of Data Memory Barrier.
+           It completes when all explicit memory accesses before this instruction complete.
+ */
+__attribute__((always_inline)) __STATIC_INLINE void __DSB(void)
+{
+  __ASM volatile ("dsb 0xF":::"memory");
+    4356:	f3bf 8f4f 	dsb	sy
+  __ASM volatile ("isb 0xF":::"memory");
+    435a:	f3bf 8f6f 	isb	sy
+	__libc_init_array();
+    435e:	4b0d      	ldr	r3, [pc, #52]	; (4394 <Reset_Handler+0x70>)
+    4360:	4798      	blx	r3
+	main();
+    4362:	4b0d      	ldr	r3, [pc, #52]	; (4398 <Reset_Handler+0x74>)
+    4364:	4798      	blx	r3
+    4366:	e7fe      	b.n	4366 <Reset_Handler+0x42>
+			*pDest++ = *pSrc++;
+    4368:	f852 0f04 	ldr.w	r0, [r2, #4]!
+    436c:	f843 0b04 	str.w	r0, [r3], #4
+    4370:	e7df      	b.n	4332 <Reset_Handler+0xe>
+		*pDest++ = 0;
+    4372:	f843 1b04 	str.w	r1, [r3], #4
+    4376:	e7e1      	b.n	433c <Reset_Handler+0x18>
+    4378:	0000462c 	.word	0x0000462c
+    437c:	20000000 	.word	0x20000000
+    4380:	20000004 	.word	0x20000004
+    4384:	20000004 	.word	0x20000004
+    4388:	20000034 	.word	0x20000034
+    438c:	00004000 	.word	0x00004000
+    4390:	e000ed00 	.word	0xe000ed00
+    4394:	000045c5 	.word	0x000045c5
+    4398:	00004535 	.word	0x00004535
+
+0000439c <uSec>:
+#include "atmel_start.h"
+#include "gpio_local.h"
+
+/* Many changes: by wa1tnr, July 2018 */
+
+void uSec(void) {
+    439c:	b082      	sub	sp, #8
+    for (volatile int i = 1; i < 2; i++) { // needs calibration
+    439e:	2301      	movs	r3, #1
+    43a0:	9301      	str	r3, [sp, #4]
+    43a2:	9b01      	ldr	r3, [sp, #4]
+    43a4:	2b01      	cmp	r3, #1
+    43a6:	dd01      	ble.n	43ac <uSec+0x10>
+        // nothing
+    }
+}
+    43a8:	b002      	add	sp, #8
+    43aa:	4770      	bx	lr
+    for (volatile int i = 1; i < 2; i++) { // needs calibration
+    43ac:	9b01      	ldr	r3, [sp, #4]
+    43ae:	3301      	adds	r3, #1
+    43b0:	e7f6      	b.n	43a0 <uSec+0x4>
+	...
+
+000043b4 <short_timer>:
+
+void short_timer(void) { // human blinkie timescale
+    43b4:	b508      	push	{r3, lr}
+    43b6:	4a03      	ldr	r2, [pc, #12]	; (43c4 <short_timer+0x10>)
+    uint32_t on_time  = 2140111222; // it's 2147 something ;)
+    for(on_time =       2140112; on_time > 0; on_time--) { // 21.4 million
+        uSec();
+    43b8:	4903      	ldr	r1, [pc, #12]	; (43c8 <short_timer+0x14>)
+    43ba:	4788      	blx	r1
+    for(on_time =       2140112; on_time > 0; on_time--) { // 21.4 million
+    43bc:	3a01      	subs	r2, #1
+    43be:	d1fc      	bne.n	43ba <short_timer+0x6>
+    }
+}
+    43c0:	bd08      	pop	{r3, pc}
+    43c2:	bf00      	nop
+    43c4:	0020a7d0 	.word	0x0020a7d0
+    43c8:	0000439d 	.word	0x0000439d
+
+000043cc <raise_LED_pins>:
+
+void raise_LED_pins(void) { // multiple target boards
+    43cc:	b510      	push	{r4, lr}
+    // raise_D13(); raise_D12();
+    raise_D13_metro();   // Metro M4 Express
+    43ce:	4b03      	ldr	r3, [pc, #12]	; (43dc <raise_LED_pins+0x10>)
+    43d0:	4798      	blx	r3
+    raise_D13_feather(); // Feather M4 Express
+    43d2:	4b03      	ldr	r3, [pc, #12]	; (43e0 <raise_LED_pins+0x14>)
+}
+    43d4:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+    raise_D13_feather(); // Feather M4 Express
+    43d8:	4718      	bx	r3
+    43da:	bf00      	nop
+    43dc:	00004585 	.word	0x00004585
+    43e0:	00004595 	.word	0x00004595
+
+000043e4 <lower_LED_pins>:
+
+void lower_LED_pins(void) {
+    43e4:	b510      	push	{r4, lr}
+    // lower_D13(); lower_D12();
+    lower_D13_metro();
+    43e6:	4b03      	ldr	r3, [pc, #12]	; (43f4 <lower_LED_pins+0x10>)
+    43e8:	4798      	blx	r3
+    lower_D13_feather();
+    43ea:	4b03      	ldr	r3, [pc, #12]	; (43f8 <lower_LED_pins+0x14>)
+}
+    43ec:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+    lower_D13_feather();
+    43f0:	4718      	bx	r3
+    43f2:	bf00      	nop
+    43f4:	000045a5 	.word	0x000045a5
+    43f8:	000045b5 	.word	0x000045b5
+
+000043fc <blink_LED>:
+
+void blink_LED(void) {
+    43fc:	b510      	push	{r4, lr}
+    // raise_D13(); raise_D12();
+    raise_LED_pins(); // Feather M4 or Metro M4
+    43fe:	4b05      	ldr	r3, [pc, #20]	; (4414 <blink_LED+0x18>)
+    short_timer(); // should be first instance of use of this timer
+    4400:	4c05      	ldr	r4, [pc, #20]	; (4418 <blink_LED+0x1c>)
+    raise_LED_pins(); // Feather M4 or Metro M4
+    4402:	4798      	blx	r3
+    short_timer(); // should be first instance of use of this timer
+    4404:	47a0      	blx	r4
+    lower_LED_pins(); // lower_D13(); lower_D12();
+    4406:	4b05      	ldr	r3, [pc, #20]	; (441c <blink_LED+0x20>)
+    4408:	4798      	blx	r3
+    short_timer();
+    440a:	4623      	mov	r3, r4
+}
+    440c:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+    short_timer();
+    4410:	4718      	bx	r3
+    4412:	bf00      	nop
+    4414:	000043cd 	.word	0x000043cd
+    4418:	000043b5 	.word	0x000043b5
+    441c:	000043e5 	.word	0x000043e5
+
+00004420 <blinkLEDfast>:
+    short_timer();
+    lower_LED_pins(); // lower_D13(); lower_D12();
+    short_timer();
+}
+
+void blinkLEDfast(void) {
+    4420:	b538      	push	{r3, r4, r5, lr}
+    for(int i = 15; i > 0; i--) {
+        blink_LED();
+    4422:	4d03      	ldr	r5, [pc, #12]	; (4430 <blinkLEDfast+0x10>)
+void blinkLEDfast(void) {
+    4424:	240f      	movs	r4, #15
+        blink_LED();
+    4426:	47a8      	blx	r5
+    for(int i = 15; i > 0; i--) {
+    4428:	3c01      	subs	r4, #1
+    442a:	d1fc      	bne.n	4426 <blinkLEDfast+0x6>
+    }
+}
+    442c:	bd38      	pop	{r3, r4, r5, pc}
+    442e:	bf00      	nop
+    4430:	000043fd 	.word	0x000043fd
+
+00004434 <clock_init>:
+}
+
+// clock clock who's there ///////////////////
+
+void clock_init(void){ // Jake Read
+    NVMCTRL->CTRLA.reg |= NVMCTRL_CTRLA_RWS(0);
+    4434:	4a30      	ldr	r2, [pc, #192]	; (44f8 <clock_init+0xc4>)
+    4436:	8813      	ldrh	r3, [r2, #0]
+    4438:	b29b      	uxth	r3, r3
+    443a:	8013      	strh	r3, [r2, #0]
+    GCLK->CTRLA.bit.SWRST = 1;
+    443c:	4b2f      	ldr	r3, [pc, #188]	; (44fc <clock_init+0xc8>)
+    443e:	781a      	ldrb	r2, [r3, #0]
+    4440:	f042 0201 	orr.w	r2, r2, #1
+    4444:	701a      	strb	r2, [r3, #0]
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_SWRST);
+    4446:	685a      	ldr	r2, [r3, #4]
+    4448:	07d0      	lsls	r0, r2, #31
+    444a:	d4fc      	bmi.n	4446 <clock_init+0x12>
+    GCLK->GENCTRL[3].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_OSCULP32K) | GCLK_GENCTRL_GENEN;
+    444c:	f44f 7282 	mov.w	r2, #260	; 0x104
+    4450:	62da      	str	r2, [r3, #44]	; 0x2c
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_GENCTRL3);
+    4452:	685a      	ldr	r2, [r3, #4]
+    4454:	0691      	lsls	r1, r2, #26
+    4456:	d4fc      	bmi.n	4452 <clock_init+0x1e>
+    GCLK->GENCTRL[0].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_OSCULP32K) | GCLK_GENCTRL_GENEN;
+    4458:	f44f 7282 	mov.w	r2, #260	; 0x104
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_GENCTRL0);
+    445c:	4927      	ldr	r1, [pc, #156]	; (44fc <clock_init+0xc8>)
+    GCLK->GENCTRL[0].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_OSCULP32K) | GCLK_GENCTRL_GENEN;
+    445e:	621a      	str	r2, [r3, #32]
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_GENCTRL0);
+    4460:	684a      	ldr	r2, [r1, #4]
+    4462:	f012 0204 	ands.w	r2, r2, #4
+    4466:	d1fb      	bne.n	4460 <clock_init+0x2c>
+
+    OSCCTRL->DFLLCTRLA.reg = 0;
+    4468:	4b25      	ldr	r3, [pc, #148]	; (4500 <clock_init+0xcc>)
+    446a:	771a      	strb	r2, [r3, #28]
+    OSCCTRL->DFLLMUL.reg = OSCCTRL_DFLLMUL_CSTEP(0x1) | OSCCTRL_DFLLMUL_FSTEP(0x1) | OSCCTRL_DFLLMUL_MUL(0);
+    446c:	4a25      	ldr	r2, [pc, #148]	; (4504 <clock_init+0xd0>)
+    446e:	629a      	str	r2, [r3, #40]	; 0x28
+    while(OSCCTRL->DFLLSYNC.reg & OSCCTRL_DFLLSYNC_DFLLMUL);
+    4470:	f893 202c 	ldrb.w	r2, [r3, #44]	; 0x2c
+    4474:	f012 0210 	ands.w	r2, r2, #16
+    4478:	d1fa      	bne.n	4470 <clock_init+0x3c>
+    OSCCTRL->DFLLCTRLB.reg = 0;
+    447a:	f883 2020 	strb.w	r2, [r3, #32]
+    while(OSCCTRL->DFLLSYNC.reg & OSCCTRL_DFLLSYNC_DFLLCTRLB);
+    447e:	4b20      	ldr	r3, [pc, #128]	; (4500 <clock_init+0xcc>)
+    4480:	4619      	mov	r1, r3
+    4482:	f893 202c 	ldrb.w	r2, [r3, #44]	; 0x2c
+    4486:	0752      	lsls	r2, r2, #29
+    4488:	d4fb      	bmi.n	4482 <clock_init+0x4e>
+    OSCCTRL->DFLLCTRLA.reg |= OSCCTRL_DFLLCTRLA_ENABLE;
+    448a:	7f1a      	ldrb	r2, [r3, #28]
+    448c:	f042 0202 	orr.w	r2, r2, #2
+    4490:	771a      	strb	r2, [r3, #28]
+    while(OSCCTRL->DFLLSYNC.reg & OSCCTRL_DFLLSYNC_ENABLE);
+    4492:	f891 302c 	ldrb.w	r3, [r1, #44]	; 0x2c
+    4496:	079b      	lsls	r3, r3, #30
+    4498:	d4fb      	bmi.n	4492 <clock_init+0x5e>
+    OSCCTRL->DFLLCTRLB.reg = OSCCTRL_DFLLCTRLB_WAITLOCK | OSCCTRL_DFLLCTRLB_CCDIS | OSCCTRL_DFLLCTRLB_USBCRM;
+    449a:	2398      	movs	r3, #152	; 0x98
+    while(!OSCCTRL->STATUS.bit.DFLLRDY);
+    449c:	4a18      	ldr	r2, [pc, #96]	; (4500 <clock_init+0xcc>)
+    OSCCTRL->DFLLCTRLB.reg = OSCCTRL_DFLLCTRLB_WAITLOCK | OSCCTRL_DFLLCTRLB_CCDIS | OSCCTRL_DFLLCTRLB_USBCRM;
+    449e:	f881 3020 	strb.w	r3, [r1, #32]
+    while(!OSCCTRL->STATUS.bit.DFLLRDY);
+    44a2:	6913      	ldr	r3, [r2, #16]
+    44a4:	05d8      	lsls	r0, r3, #23
+    44a6:	d5fc      	bpl.n	44a2 <clock_init+0x6e>
+
+    GCLK->GENCTRL[5].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_DFLL_Val) | GCLK_GENCTRL_GENEN | GCLK_GENCTRL_DIV(24u);
+    44a8:	4b14      	ldr	r3, [pc, #80]	; (44fc <clock_init+0xc8>)
+    44aa:	4a17      	ldr	r2, [pc, #92]	; (4508 <clock_init+0xd4>)
+    44ac:	635a      	str	r2, [r3, #52]	; 0x34
+    while(GCLK->SYNCBUSY.bit.GENCTRL5);
+    44ae:	685a      	ldr	r2, [r3, #4]
+    44b0:	0611      	lsls	r1, r2, #24
+    44b2:	d4fc      	bmi.n	44ae <clock_init+0x7a>
+
+    GCLK->PCHCTRL[OSCCTRL_GCLK_ID_FDPLL0].reg = (1 << GCLK_PCHCTRL_CHEN_Pos) | GCLK_PCHCTRL_GEN(GCLK_PCHCTRL_GEN_GCLK5_Val);
+    44b4:	2245      	movs	r2, #69	; 0x45
+    44b6:	f8c3 2084 	str.w	r2, [r3, #132]	; 0x84
+    OSCCTRL->Dpll[0].DPLLRATIO.reg = OSCCTRL_DPLLRATIO_LDRFRAC(0x00) | OSCCTRL_DPLLRATIO_LDR(59);
+    44ba:	4b11      	ldr	r3, [pc, #68]	; (4500 <clock_init+0xcc>)
+    44bc:	223b      	movs	r2, #59	; 0x3b
+    44be:	635a      	str	r2, [r3, #52]	; 0x34
+    while(OSCCTRL->Dpll[0].DPLLSYNCBUSY.bit.DPLLRATIO);
+    44c0:	6bda      	ldr	r2, [r3, #60]	; 0x3c
+    44c2:	0752      	lsls	r2, r2, #29
+    44c4:	d4fc      	bmi.n	44c0 <clock_init+0x8c>
+    OSCCTRL->Dpll[0].DPLLCTRLB.reg = OSCCTRL_DPLLCTRLB_REFCLK_GCLK | OSCCTRL_DPLLCTRLB_LBYPASS;
+    44c6:	f44f 6200 	mov.w	r2, #2048	; 0x800
+    44ca:	639a      	str	r2, [r3, #56]	; 0x38
+    OSCCTRL->Dpll[0].DPLLCTRLA.reg = OSCCTRL_DPLLCTRLA_ENABLE;
+    44cc:	2202      	movs	r2, #2
+    44ce:	f883 2030 	strb.w	r2, [r3, #48]	; 0x30
+    while(OSCCTRL->Dpll[0].DPLLSTATUS.bit.CLKRDY == 0 || OSCCTRL->Dpll[0].DPLLSTATUS.bit.LOCK == 0);
+    44d2:	4b0b      	ldr	r3, [pc, #44]	; (4500 <clock_init+0xcc>)
+    44d4:	6c1a      	ldr	r2, [r3, #64]	; 0x40
+    44d6:	0790      	lsls	r0, r2, #30
+    44d8:	d5fc      	bpl.n	44d4 <clock_init+0xa0>
+    44da:	6c1a      	ldr	r2, [r3, #64]	; 0x40
+    44dc:	07d1      	lsls	r1, r2, #31
+    44de:	d5f9      	bpl.n	44d4 <clock_init+0xa0>
+
+    GCLK->GENCTRL[0].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_DPLL0) | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN;
+    44e0:	4b06      	ldr	r3, [pc, #24]	; (44fc <clock_init+0xc8>)
+    44e2:	f240 3207 	movw	r2, #775	; 0x307
+    44e6:	621a      	str	r2, [r3, #32]
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_GENCTRL0);
+    44e8:	685a      	ldr	r2, [r3, #4]
+    44ea:	0752      	lsls	r2, r2, #29
+    44ec:	d4fc      	bmi.n	44e8 <clock_init+0xb4>
+
+    MCLK->CPUDIV.reg = MCLK_CPUDIV_DIV_DIV1;
+    44ee:	4b07      	ldr	r3, [pc, #28]	; (450c <clock_init+0xd8>)
+    44f0:	2201      	movs	r2, #1
+    44f2:	715a      	strb	r2, [r3, #5]
+}
+    44f4:	4770      	bx	lr
+    44f6:	bf00      	nop
+    44f8:	41004000 	.word	0x41004000
+    44fc:	40001c00 	.word	0x40001c00
+    4500:	40001000 	.word	0x40001000
+    4504:	04010000 	.word	0x04010000
+    4508:	00180106 	.word	0x00180106
+    450c:	40000800 	.word	0x40000800
+
+00004510 <nmain>:
+
+void nmain(void) {
+    4510:	b508      	push	{r3, lr}
+        raise_LED_pins(); // raise_D13(); raise_D12();
+    4512:	4b04      	ldr	r3, [pc, #16]	; (4524 <nmain+0x14>)
+        activity_LED_demo();
+	while (1) {
+            flicker_LED();
+    4514:	4d04      	ldr	r5, [pc, #16]	; (4528 <nmain+0x18>)
+            short_timer();
+    4516:	4c05      	ldr	r4, [pc, #20]	; (452c <nmain+0x1c>)
+        raise_LED_pins(); // raise_D13(); raise_D12();
+    4518:	4798      	blx	r3
+    blinkLEDfast();
+    451a:	4b05      	ldr	r3, [pc, #20]	; (4530 <nmain+0x20>)
+    451c:	4798      	blx	r3
+            flicker_LED();
+    451e:	47a8      	blx	r5
+            short_timer();
+    4520:	47a0      	blx	r4
+    4522:	e7fc      	b.n	451e <nmain+0xe>
+    4524:	000043cd 	.word	0x000043cd
+    4528:	000043fd 	.word	0x000043fd
+    452c:	000043b5 	.word	0x000043b5
+    4530:	00004421 	.word	0x00004421
+
+00004534 <main>:
+	}
+}
+
+int main(void) {
+    4534:	b508      	push	{r3, lr}
+    SystemInit();
+    4536:	4b04      	ldr	r3, [pc, #16]	; (4548 <main+0x14>)
+    4538:	4798      	blx	r3
+    clock_init();
+    453a:	4b04      	ldr	r3, [pc, #16]	; (454c <main+0x18>)
+    453c:	4798      	blx	r3
+    init_act_LED();
+    453e:	4b04      	ldr	r3, [pc, #16]	; (4550 <main+0x1c>)
+    4540:	4798      	blx	r3
+    nmain();
+    4542:	4b04      	ldr	r3, [pc, #16]	; (4554 <main+0x20>)
+    4544:	4798      	blx	r3
+    4546:	bf00      	nop
+    4548:	000042d9 	.word	0x000042d9
+    454c:	00004435 	.word	0x00004435
+    4550:	00004559 	.word	0x00004559
+    4554:	00004511 	.word	0x00004511
+
+00004558 <init_act_LED>:
+	((Port *)hw)->Group[submodule_index].DIRTGL.reg = PORT_DIR_DIR(mask);
+}
+
+static inline void hri_port_set_DIR_reg(const void *const hw, uint8_t submodule_index, hri_port_dir_reg_t mask)
+{
+	((Port *)hw)->Group[submodule_index].DIRSET.reg = mask;
+    4558:	4b07      	ldr	r3, [pc, #28]	; (4578 <init_act_LED+0x20>)
+
+static inline void hri_port_write_WRCONFIG_reg(const void *const hw, uint8_t submodule_index,
+                                               hri_port_wrconfig_reg_t data)
+{
+	PORT_CRITICAL_SECTION_ENTER();
+	((Port *)hw)->Group[submodule_index].WRCONFIG.reg = data;
+    455a:	4908      	ldr	r1, [pc, #32]	; (457c <init_act_LED+0x24>)
+	((Port *)hw)->Group[submodule_index].DIRSET.reg = mask;
+    455c:	f44f 0200 	mov.w	r2, #8388608	; 0x800000
+    4560:	609a      	str	r2, [r3, #8]
+	((Port *)hw)->Group[submodule_index].WRCONFIG.reg = data;
+    4562:	f04f 4280 	mov.w	r2, #1073741824	; 0x40000000
+    4566:	629a      	str	r2, [r3, #40]	; 0x28
+    4568:	6299      	str	r1, [r3, #40]	; 0x28
+	((Port *)hw)->Group[submodule_index].DIRSET.reg = mask;
+    456a:	f44f 3180 	mov.w	r1, #65536	; 0x10000
+    456e:	6099      	str	r1, [r3, #8]
+	((Port *)hw)->Group[submodule_index].WRCONFIG.reg = data;
+    4570:	629a      	str	r2, [r3, #40]	; 0x28
+    4572:	4a03      	ldr	r2, [pc, #12]	; (4580 <init_act_LED+0x28>)
+    4574:	629a      	str	r2, [r3, #40]	; 0x28
+// #include "gpio_local.h"
+
+void init_act_LED(void) {
+    gpio_set_pin_direction(PA23, GPIO_DIRECTION_OUT);
+    gpio_set_pin_direction(PA16, GPIO_DIRECTION_OUT);
+}
+    4576:	4770      	bx	lr
+    4578:	41008000 	.word	0x41008000
+    457c:	c0000080 	.word	0xc0000080
+    4580:	c0000001 	.word	0xc0000001
+
+00004584 <raise_D13_metro>:
+	((Port *)hw)->Group[submodule_index].OUTSET.reg = mask;
+    4584:	4b02      	ldr	r3, [pc, #8]	; (4590 <raise_D13_metro+0xc>)
+    4586:	f44f 3280 	mov.w	r2, #65536	; 0x10000
+    458a:	619a      	str	r2, [r3, #24]
+
+void raise_D13_metro(void) { // Metro M4 Express
+    gpio_set_pin_level(PA16, true);
+}
+    458c:	4770      	bx	lr
+    458e:	bf00      	nop
+    4590:	41008000 	.word	0x41008000
+
+00004594 <raise_D13_feather>:
+    4594:	4b02      	ldr	r3, [pc, #8]	; (45a0 <raise_D13_feather+0xc>)
+    4596:	f44f 0200 	mov.w	r2, #8388608	; 0x800000
+    459a:	619a      	str	r2, [r3, #24]
+
+void raise_D13_feather(void) { // Feather M4 Express
+    gpio_set_pin_level(PA23, true);
+}
+    459c:	4770      	bx	lr
+    459e:	bf00      	nop
+    45a0:	41008000 	.word	0x41008000
+
+000045a4 <lower_D13_metro>:
+	((Port *)hw)->Group[submodule_index].OUTCLR.reg = mask;
+    45a4:	4b02      	ldr	r3, [pc, #8]	; (45b0 <lower_D13_metro+0xc>)
+    45a6:	f44f 3280 	mov.w	r2, #65536	; 0x10000
+    45aa:	615a      	str	r2, [r3, #20]
+
+void lower_D13_metro(void) {
+    gpio_set_pin_level(PA16, false);
+}
+    45ac:	4770      	bx	lr
+    45ae:	bf00      	nop
+    45b0:	41008000 	.word	0x41008000
+
+000045b4 <lower_D13_feather>:
+    45b4:	4b02      	ldr	r3, [pc, #8]	; (45c0 <lower_D13_feather+0xc>)
+    45b6:	f44f 0200 	mov.w	r2, #8388608	; 0x800000
+    45ba:	615a      	str	r2, [r3, #20]
+
+void lower_D13_feather(void) {
+    gpio_set_pin_level(PA23, false);
+}
+    45bc:	4770      	bx	lr
+    45be:	bf00      	nop
+    45c0:	41008000 	.word	0x41008000
+
+000045c4 <__libc_init_array>:
+    45c4:	b570      	push	{r4, r5, r6, lr}
+    45c6:	4e0d      	ldr	r6, [pc, #52]	; (45fc <__libc_init_array+0x38>)
+    45c8:	4c0d      	ldr	r4, [pc, #52]	; (4600 <__libc_init_array+0x3c>)
+    45ca:	1ba4      	subs	r4, r4, r6
+    45cc:	10a4      	asrs	r4, r4, #2
+    45ce:	2500      	movs	r5, #0
+    45d0:	42a5      	cmp	r5, r4
+    45d2:	d109      	bne.n	45e8 <__libc_init_array+0x24>
+    45d4:	4e0b      	ldr	r6, [pc, #44]	; (4604 <__libc_init_array+0x40>)
+    45d6:	4c0c      	ldr	r4, [pc, #48]	; (4608 <__libc_init_array+0x44>)
+    45d8:	f000 f818 	bl	460c <_init>
+    45dc:	1ba4      	subs	r4, r4, r6
+    45de:	10a4      	asrs	r4, r4, #2
+    45e0:	2500      	movs	r5, #0
+    45e2:	42a5      	cmp	r5, r4
+    45e4:	d105      	bne.n	45f2 <__libc_init_array+0x2e>
+    45e6:	bd70      	pop	{r4, r5, r6, pc}
+    45e8:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+    45ec:	4798      	blx	r3
+    45ee:	3501      	adds	r5, #1
+    45f0:	e7ee      	b.n	45d0 <__libc_init_array+0xc>
+    45f2:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+    45f6:	4798      	blx	r3
+    45f8:	3501      	adds	r5, #1
+    45fa:	e7f2      	b.n	45e2 <__libc_init_array+0x1e>
+    45fc:	00004618 	.word	0x00004618
+    4600:	00004618 	.word	0x00004618
+    4604:	00004618 	.word	0x00004618
+    4608:	0000461c 	.word	0x0000461c
+
+0000460c <_init>:
+    460c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    460e:	bf00      	nop
+    4610:	bcf8      	pop	{r3, r4, r5, r6, r7}
+    4612:	bc08      	pop	{r3}
+    4614:	469e      	mov	lr, r3
+    4616:	4770      	bx	lr
+
+00004618 <__init_array_start>:
+    4618:	00004289 	.word	0x00004289
+
+0000461c <_fini>:
+    461c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    461e:	bf00      	nop
+    4620:	bcf8      	pop	{r3, r4, r5, r6, r7}
+    4622:	bc08      	pop	{r3}
+    4624:	469e      	mov	lr, r3
+    4626:	4770      	bx	lr
+
+00004628 <__fini_array_start>:
+    4628:	00004265 	.word	0x00004265
