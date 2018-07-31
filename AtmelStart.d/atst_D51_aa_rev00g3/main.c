@@ -22,31 +22,28 @@ void short_timer(void) { // human blinkie timescale
 
 void raise_LED_pins(void) { // multiple target boards
     // raise_D13(); raise_D12();
-    void raise_D13-metro();   // Metro M4 Express
-    void raise_D13-feather(); // Feather M4 Express
+    raise_D13_metro();   // Metro M4 Express
+    raise_D13_feather(); // Feather M4 Express
 }
 
 void lower_LED_pins(void) {
     // lower_D13(); lower_D12();
-    void lower_D13-metro();
-    void lower_D13-feather();
+    lower_D13_metro();
+    lower_D13_feather();
 }
 
 void blink_LED(void) {
     // raise_D13(); raise_D12();
     raise_LED_pins(); // Feather M4 or Metro M4
     short_timer(); // should be first instance of use of this timer
-    lower_D13();
-    lower_D12();
+    lower_LED_pins(); // lower_D13(); lower_D12();
     short_timer();
 }
 
 void flicker_LED(void) {
-    raise_D13();
-    raise_D12();
+    raise_LED_pins(); // raise_D13(); raise_D12();
     short_timer();
-    lower_D13();
-    lower_D12();
+    lower_LED_pins(); // lower_D13(); lower_D12();
     short_timer();
 }
 
