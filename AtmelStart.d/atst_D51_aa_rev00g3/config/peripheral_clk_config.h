@@ -9,7 +9,8 @@
  * \brief CPU's Clock frequency
  */
 #ifndef CONF_CPU_FREQUENCY
-#define CONF_CPU_FREQUENCY 47998976
+// #define CONF_CPU_FREQUENCY 47998976
+#define CONF_CPU_FREQUENCY   120000000
 #endif
 
 // <<< end of configuration section >>>

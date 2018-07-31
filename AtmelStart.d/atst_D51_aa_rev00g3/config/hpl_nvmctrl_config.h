@@ -34,3 +34,4 @@
 // <<< end of configuration section >>>
 
 #endif // HPL_NVMCTRL_CONFIG_H
+// foo

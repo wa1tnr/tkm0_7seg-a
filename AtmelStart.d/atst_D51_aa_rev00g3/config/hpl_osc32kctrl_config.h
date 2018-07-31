@@ -163,3 +163,4 @@
 // <<< end of configuration section >>>
 
 #endif // HPL_OSC32KCTRL_CONFIG_H
+// foo

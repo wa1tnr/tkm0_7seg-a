@@ -16,3 +16,4 @@
 // <<< end of configuration section >>>
 
 #endif // HPL_SYSTICK_CONFIG_H
+// foo

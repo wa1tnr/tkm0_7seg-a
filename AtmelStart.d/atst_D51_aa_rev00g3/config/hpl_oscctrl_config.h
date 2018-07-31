@@ -632,3 +632,4 @@
 // <<< end of configuration section >>>
 
 #endif // HPL_OSCCTRL_CONFIG_H
+// foo

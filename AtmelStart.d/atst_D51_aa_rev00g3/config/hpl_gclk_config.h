@@ -918,3 +918,4 @@
 // <<< end of configuration section >>>
 
 #endif // HPL_GCLK_CONFIG_H
+// foo
