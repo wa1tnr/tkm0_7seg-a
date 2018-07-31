@@ -2,10 +2,6 @@
 
 // main.c
 
-// #include <atmel_start.h>
-// #include "driver_examples.h"
-// #include "driver_init.h"
-// #include "utils.h"
 #include "atmel_start.h"
 #include "gpio_local.h"
 
