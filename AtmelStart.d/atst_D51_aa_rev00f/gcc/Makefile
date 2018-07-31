@@ -152,7 +152,7 @@ $(OUTPUT_FILE_PATH): $(OBJS)
 	$(QUOTE)arm-none-eabi-gcc$(QUOTE) -o $(OUTPUT_FILE_NAME).elf $(OBJS_AS_ARGS) -Wl,--start-group -lm -Wl,--end-group -mthumb \
 -Wl,-Map="$(OUTPUT_FILE_NAME).map" --specs=nano.specs -Wl,--gc-sections -mcpu=cortex-m4 \
  \
--T"../gcc/gcc/samd51j19a_flash.ld" \
+-T"../gcc/gcc/samd51j19a_flash_with_bootloader.ld" \
 -L"../gcc/gcc"
 	@echo Finished building target: $@
 
@@ -208,6 +208,10 @@ endif
 
 $(SUB_DIRS):
 	$(MK_DIR) "$@"
+
+
+install:
+	./scripts/_bossac_local.sh ./AtmelStart.bin
 
 clean:
 	rm -f $(OBJS_AS_ARGS)
