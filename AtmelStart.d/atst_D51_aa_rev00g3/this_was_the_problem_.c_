@@ -1,5 +1,15 @@
+// Tue Jul 31 14:47:05 UTC 2018
+
 #include "atmel_start.h"
 #include "gpio_local.h"
+
+// wa1tnr
+//
+// ATSAMD51J19A using Atmel Start
+//  - working LED Blinkie D13 in under 2 kilobytes of .bin uploaded
+// Feather M4 Express and
+// Metro M4 Express
+
 
 /*
  * clock stuff is from Jake Read.
