@@ -1,0 +1,1 @@
+27ec547555080201076c95f437cf1a96  samd51_9O2_half_duplex-a.atzip
