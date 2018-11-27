@@ -1,0 +1,4 @@
+/*
+#define EXPOSE_DIGIT_PAINTING -1
+*/
+#define EXPOSE_DIGIT_PAINTING  0
