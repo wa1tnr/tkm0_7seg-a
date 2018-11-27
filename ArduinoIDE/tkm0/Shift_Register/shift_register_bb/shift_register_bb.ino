@@ -1,6 +1,7 @@
 // 23 NOV 2018 02:21z beginning
 // then came bronson
 #define DATENOW "Tue 13 Mar 2018  06:04z"
+#include "config.h"
 #include "src/periph/dotstar.h"
 extern void setup_dotstar();
 extern void loop_dotstar();
@@ -32,7 +33,6 @@ void setup(void)
 
   for (int i = 4 ; i > 0 ; i--) {
       loop_dotstar();
-      // delay(500);
   }
 
   Serial.print(DATENOW);
@@ -55,7 +55,6 @@ void _updateSR(void) {
    shiftOut(dataPin, clockPin, MSBFIRST, uleds);
 
    digitalWrite(latchPin, HIGH);
-   delay(1); // CRITICAL
 }
 
 void updateShiftRegister(void) {
@@ -96,33 +95,16 @@ void blankleds(void) {
 
 void setleds(void) {
     leds = ledval; updateShiftRegister();
+    delay(1); // CRITICAL - must be a finite, non-zero delay here
 }
-
-
-void glow(void) {
-    blankleds();
-    for (int i = 0; i < 125; i++) {
-        setleds();
-        blankleds();
-// --------------------
-        delay(2);
-// --------------------
-        // delay(1);
-    }
-}
-
-void chordata(void) {
-    blankleds();
-    setleds();
-}
-
 
 void _puteye(void) {
+  if (EXPOSE_DIGIT_PAINTING) {
+      delay(122); // to expose digit change
+  }
   setleds();
   blankleds();
 }
-
-  // delay(slew + slew);
 
 void _outeye(void) {
   pos = 15 ; _puteye();
@@ -132,7 +114,8 @@ void _outeye(void) {
 }
 
 void outeye(void) {
-    for (int i = 24; i>0; i--) {
+    int duration = 322;
+    for (int i = duration; i>0; i--) {
         _outeye();
     }
 }
@@ -225,3 +208,8 @@ void loop(void)
 
 }
 
+
+/*
+#define EXPOSE_DIGIT_PAINTING -1
+*/
+#define EXPOSE_DIGIT_PAINTING  0
