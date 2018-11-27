@@ -264,6 +264,14 @@ void dig_nine(void) {
       ledval = i;
 }
 
+
+void ltr_l(void) {
+  int i = 0;
+  // L
+  i = 0 + 0 + 0 + 8 + 16 + 32 +  0 +   0;
+      ledval = i;
+}
+
 void ltr_a(void) { // the letter, A
   int i = 0;
   // A
@@ -306,6 +314,13 @@ void ltr_f(void) {
       ledval = i;
 }
 
+void ltr_blank(void) {
+  int i = 0;
+  // blank
+  i = 0 ;
+      ledval = i;
+}
+
 
 
 void loop(void) 
@@ -344,6 +359,18 @@ void loop(void)
   }
 
 
+  delay(1000);
+
+  // message:  'LE  '
+  for (int j = 2;  j>0; j--) {
+      for (int k = 255; k>0; k--) {
+          ltr_blank();   outeye_zero();
+          ltr_blank();  outeye_one();
+          ltr_e();      outeye_two();
+          ltr_l();      outeye_three();
+      }
+  }
+
 
   delay(1000);
 
@@ -352,14 +379,8 @@ void loop(void)
   for (int j = 2;  j>0; j--) {
       for (int k = 255; k>0; k--) {
           ltr_a();     outeye_zero();
-//        dig_zero();     outeye_one();
-          ltr_c();     outeye_one();
-
+          ltr_c();     outeye_one(); 
           dig_zero();     outeye_two();
-
-//        ltr_a();     outeye_three();
-
-
           ltr_f();     outeye_three();
       }
   }
