@@ -99,17 +99,81 @@ void _puteye(void) {
   blankleds();
 }
 
-void _outeye(void) {
+void _outeye_zero(void) {
   pos = 15 ; _puteye();
+
+/*
   pos = 22 ; _puteye();
   pos = 27 ; _puteye();
   pos = 29 ; _puteye();
+*/
 }
 
-void outeye(void) {
-    int duration = 322;
+
+void _outeye_one(void) {
+/*
+  pos = 15 ; _puteye();
+*/
+
+  pos = 22 ; _puteye();
+
+/*
+  pos = 27 ; _puteye();
+  pos = 29 ; _puteye();
+*/
+}
+
+
+void _outeye_two(void) {
+/*
+  pos = 15 ; _puteye();
+  pos = 22 ; _puteye();
+*/
+
+  pos = 27 ; _puteye();
+
+/*
+  pos = 29 ; _puteye();
+*/
+}
+
+
+void _outeye_three(void) {
+/*
+  pos = 15 ; _puteye();
+  pos = 22 ; _puteye();
+  pos = 27 ; _puteye();
+*/
+  pos = 29 ; _puteye();
+
+}
+
+
+void outeye_zero(void) {
+    int duration = 2;
     for (int i = duration; i>0; i--) {
-        _outeye();
+        _outeye_zero();
+    }
+}
+
+void outeye_one(void) {
+    int duration = 2;
+    for (int i = duration; i>0; i--) {
+        _outeye_one();
+    }
+}
+
+void outeye_two(void) {
+    int duration = 2;
+    for (int i = duration; i>0; i--) {
+        _outeye_two();
+    }
+}
+
+void outeye_three(void) {
+    int duration = 2;
+    for (int i = duration; i>0; i--) {
+        _outeye_three();
     }
 }
 
@@ -118,7 +182,7 @@ void dig_zero(void) {
 
   // 0 
   i = 1 + 2 + 4 + 8 + 16 + 32 +  0 +   0;
-      ledval = i; outeye();
+      ledval = i;
 }
 
 void dig_one(void) {
@@ -126,8 +190,120 @@ void dig_one(void) {
 
   // 1
   i = 0 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
-      ledval = i; outeye();
+      // ledval = i; outeye();
+      ledval = i;
 }
+
+void dig_two(void) {
+  int i = 0;
+
+  // 2     // 1 2 8 16 64
+  i = 1 + 2 + 0 + 8 + 16 +  0 + 64 +   0;
+      ledval = i;
+}
+
+
+void dig_three(void) {
+  int i = 0;
+
+  // 3
+  i = 1 + 2 + 4 + 8 +  0 +  0 + 64 +   0;
+      ledval = i;
+}
+
+
+void dig_four(void) {
+  int i = 0;
+
+  // 4   //  2 4 32 64
+  i = 0 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
+      ledval = i;
+}
+
+void dig_five(void) {
+  int i = 0;
+
+  // 5   // like 2
+  i = 1 + 0 + 4 + 8 +  0 + 32 + 64 +   0;
+      ledval = i;
+}
+
+
+void dig_six(void) {
+  int i = 0;
+
+  // 6
+  i = 1 + 0 + 4 + 8 + 16 + 32 + 64 +   0;
+      ledval = i;
+}
+
+void dig_seven(void) {
+  int i = 0;
+  // 7
+  i = 1 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
+      ledval = i;
+}
+
+
+
+void dig_eight(void) {
+  int i = 0;
+
+  // 8
+  i = 1 + 2 + 4 + 8 + 16 + 32 + 64 +   0;
+      ledval = i;
+}
+
+
+void dig_nine(void) {
+  int i = 0;
+  // 9
+  i = 1 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
+      ledval = i;
+}
+
+void ltr_a(void) { // the letter, A
+  int i = 0;
+  // A
+  i = 1 + 2 + 4 + 16 + 32 + 64;
+      ledval = i;
+}
+
+void ltr_b(void) {
+  int i = 0;
+  // b
+  i = 4 + 8 + 16 + 32 + 64;
+      ledval = i;
+}
+
+void ltr_c(void) {
+  int i = 0;
+  // C
+  i = 1 + 8 + 16 + 32;
+      ledval = i;
+}
+
+void ltr_d(void) {
+  int i = 0;
+  // d
+  i = 2 + 4 + 8 + 16 + 64;
+      ledval = i;
+}
+
+void ltr_e(void) {
+  int i = 0;
+  // E
+  i = 1 + 8 + 16 + 32 + 64;
+      ledval = i;
+}
+
+void ltr_f(void) {
+  int i = 0;
+  // F
+  i = 1 + 0 + 16 + 32 + 64;
+      ledval = i;
+}
+
 
 
 void loop(void) 
@@ -140,77 +316,41 @@ void loop(void)
 
   int i = 0;
 
-  dig_zero(); dig_one();
-  dig_zero(); dig_one();
-  dig_zero(); dig_one();
-  dig_zero(); dig_one();
 
-  // 2     // 1 2 8 16 64
-  i = 1 + 2 + 0 + 8 + 16 +  0 + 64 +   0;
-      ledval = i; outeye();
 
-  // 3
-  i = 1 + 2 + 4 + 8 +  0 +  0 + 64 +   0;
-      ledval = i; outeye();
+  for (int j = 2;  j>0; j--) { // for loops provide duration
+      for (int k = 255; k>0; k--) {
+          dig_three(); outeye_zero();
+          dig_two(); outeye_one();
+          dig_two(); outeye_two();
+          dig_three(); outeye_three();
+      }
+  }
 
-  // 4   //  2 4 32 64
-  i = 0 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
-      ledval = i; outeye();
+  delay(1000);
 
-  // 5   // like 2
-  i = 1 + 0 + 4 + 8 +  0 + 32 + 64 +   0;
-      ledval = i; outeye();
+  for (int j = 2;  j>0; j--) {
+      for (int k = 255; k>0; k--) {
+          dig_eight(); outeye_zero();
+          ltr_a(); outeye_one();
+          dig_five(); outeye_two();
+          dig_four(); outeye_three();
+      }
+  }
 
-  // 6
-  i = 1 + 0 + 4 + 8 + 16 + 32 + 64 +   0;
-      ledval = i; outeye();
 
-  // 7
-  i = 1 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
-      ledval = i; outeye();
 
-  // 8
-  i = 1 + 2 + 4 + 8 + 16 + 32 + 64 +   0;
-      ledval = i; outeye();
-
-  // 9
-  i = 1 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
-      ledval = i; outeye();
-
-  // A
-  i = 1 + 2 + 4 + 16 + 32 + 64;
-      ledval = i; outeye();
-
-  // b
-  i = 4 + 8 + 16 + 32 + 64;
-      ledval = i; outeye();
-
-  // C
-  i = 1 + 8 + 16 + 32;
-      ledval = i; outeye();
-
-  // d
-  i = 2 + 4 + 8 + 16 + 64;
-      ledval = i; outeye();
-
-  // E
-  i = 1 + 8 + 16 + 32 + 64;
-      ledval = i; outeye();
-
-  // F
-  i = 1 + 0 + 16 + 32 + 64;
-      ledval = i; outeye();
 
 
   i = 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128;
   i = 0;
 
   // hold display blank for a while:
-  i = 128; ledval = i; outeye(); blankleds();
+  i = 128; ledval = i; outeye_zero(); blankleds();
       delay(111 + slew);
 
   // hold display blank for even a bit longer:
-  i = 128; ledval = i; outeye(); blankleds();
+  i = 128; ledval = i; outeye_zero(); blankleds();
       delay(111 + slew);
 
 }
