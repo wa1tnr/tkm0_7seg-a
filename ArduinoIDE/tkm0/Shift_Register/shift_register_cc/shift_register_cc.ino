@@ -317,7 +317,9 @@ void loop(void)
   int i = 0;
 
 
+  delay(1000);
 
+  // message: '3223'
   for (int j = 2;  j>0; j--) { // for loops provide duration
       for (int k = 255; k>0; k--) {
           dig_three(); outeye_zero();
@@ -329,16 +331,28 @@ void loop(void)
 
   delay(1000);
 
+  // message:  '45A8'
   for (int j = 2;  j>0; j--) {
       for (int k = 255; k>0; k--) {
           dig_eight(); outeye_zero();
-          ltr_a(); outeye_one();
-          dig_five(); outeye_two();
-          dig_four(); outeye_three();
+          ltr_a();     outeye_one();
+          dig_five();  outeye_two();
+          dig_four();  outeye_three();
       }
   }
 
+  delay(1000);
 
+  // message: 'CAFE'
+
+  for (int j = 2;  j>0; j--) {
+      for (int k = 255; k>0; k--) {
+          ltr_e();     outeye_zero();
+          ltr_f();     outeye_one();
+          ltr_a();     outeye_two();
+          ltr_c();     outeye_three();
+      }
+  }
 
 
 
