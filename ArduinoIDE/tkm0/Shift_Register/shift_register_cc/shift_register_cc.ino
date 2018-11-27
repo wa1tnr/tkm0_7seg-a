@@ -1,6 +1,8 @@
-// 27 NOV 2018 14:23z
+// 27 NOV 2018 16:28z
 
-#define DATENOW "Tue 27 Nov Mar 2018  14:22z"
+// etrelle
+
+#define DATENOW "Tue 27 Nov 2018  16:28z"
 #include "config.h"
 #include "src/periph/dotstar.h"
 extern void setup_dotstar();
@@ -331,15 +333,40 @@ void loop(void)
 
   delay(1000);
 
-  // message:  '45A8'
+  // message:  'A824'
   for (int j = 2;  j>0; j--) {
       for (int k = 255; k>0; k--) {
-          dig_eight(); outeye_zero();
-          ltr_a();     outeye_one();
-          dig_five();  outeye_two();
-          dig_four();  outeye_three();
+          dig_four();   outeye_zero();
+          dig_two();    outeye_one();
+          dig_eight();  outeye_two();
+          ltr_a();      outeye_three();
       }
   }
+
+
+
+  delay(1000);
+
+  // message: 'F0CA'
+
+  for (int j = 2;  j>0; j--) {
+      for (int k = 255; k>0; k--) {
+          ltr_a();     outeye_zero();
+//        dig_zero();     outeye_one();
+          ltr_c();     outeye_one();
+
+          dig_zero();     outeye_two();
+
+//        ltr_a();     outeye_three();
+
+
+          ltr_f();     outeye_three();
+      }
+  }
+
+
+
+
 
   delay(1000);
 
