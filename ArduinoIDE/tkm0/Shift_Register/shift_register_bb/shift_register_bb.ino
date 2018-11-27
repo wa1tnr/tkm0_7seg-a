@@ -43,22 +43,19 @@ void setup(void)
 }
 
 void _digitSelect(void) {
-   delay(12);
-   uleds = pos; // uleds =   29; // valid: 15 rightmost or 2^0; 22 2^1, 27 and 29 or 0 (all four)
+   uleds = pos;
    shiftOut(dataPin, clockPin, MSBFIRST, uleds);
 }
 
 void _updateSR(void) {
-   // delay(12);
    digitalWrite(latchPin, LOW);
 
    _digitSelect();
    uleds = leds; // sequential digit
    shiftOut(dataPin, clockPin, MSBFIRST, uleds);
 
-   // delay(12);
    digitalWrite(latchPin, HIGH);
-   delay(slew);
+   delay(1); // CRITICAL
 }
 
 void updateShiftRegister(void) {
@@ -98,9 +95,6 @@ void blankleds(void) {
 
 
 void setleds(void) {
-    // leds = 0;
-    // bitSet(leds, ledval); updateShiftRegister();
-
     leds = ledval; updateShiftRegister();
 }
 
@@ -124,18 +118,23 @@ void chordata(void) {
 
 
 void _puteye(void) {
-  setleds(); 
+  setleds();
+  blankleds();
+}
 
   // delay(slew + slew);
 
-  blankleds(); delay(1);
-}
-
-void outeye(void) {
+void _outeye(void) {
   pos = 15 ; _puteye();
   pos = 22 ; _puteye();
   pos = 27 ; _puteye();
   pos = 29 ; _puteye();
+}
+
+void outeye(void) {
+    for (int i = 24; i>0; i--) {
+        _outeye();
+    }
 }
 
 void loop(void) 
