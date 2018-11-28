@@ -1,6 +1,6 @@
 // 28 NOV 2018 09:02z
 
-// telpodro
+// finpaflik
 
 #define DATENOW "Wed 28 Nov 2018  09:02z"
 #include "config.h"
@@ -46,16 +46,15 @@ void _digitSelect(void) {
     shiftOut(dataPin, clockPin, MSBFIRST, uleds);
 }
 
-void _updateSR(void) {
-    digitalWrite(latchPin, LOW);
-    _digitSelect();
-    uleds = leds; // sequential digit
-    shiftOut(dataPin, clockPin, MSBFIRST, uleds);
-    digitalWrite(latchPin, HIGH);
-}
-
 void updateShiftRegister(void) {
-    uleds = leds;  _updateSR();
+    digitalWrite(latchPin, LOW);
+    _digitSelect(); // digit 0 1 2 or 3 using 'pos' as the index
+
+    uleds = leds;   // A-F 0-9 and a few other glyphs
+
+    shiftOut(dataPin, clockPin, MSBFIRST, uleds); // paint the character's glyph!
+
+    digitalWrite(latchPin, HIGH);
 }
 
 void blankleds(void) {
@@ -65,7 +64,8 @@ void blankleds(void) {
 
 
 void setleds(void) {
-    leds = ledval; updateShiftRegister();
+    leds = ledval;
+    updateShiftRegister();
     if (!EXPOSE_DIGIT_PAINTING) {
         delay(1); // CRITICAL - must be a finite, non-zero delay here
     } else {
@@ -73,7 +73,7 @@ void setleds(void) {
     }
 }
 
-void _puteye(void) {
+void flash_digit(void) {
     if (EXPOSE_DIGIT_PAINTING) {
         // delay(122); // to expose digit change
         delay(424); // to expose digit change
@@ -83,21 +83,21 @@ void _puteye(void) {
 }
 
 void _outeye_zero(void) {
-    pos = 15 ; _puteye();
+    pos = 15 ; flash_digit();
 }
 
 
 void _outeye_one(void) {
-    pos = 22 ; _puteye();
+    pos = 22 ; flash_digit();
 }
 
 
 void _outeye_two(void) {
-    pos = 27 ; _puteye();
+    pos = 27 ; flash_digit();
 }
 
 void _outeye_three(void) {
-   pos = 29 ; _puteye();
+   pos = 29 ; flash_digit();
 }
 
 void outeye_zero(void) {
