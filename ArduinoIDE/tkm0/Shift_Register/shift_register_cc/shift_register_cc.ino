@@ -1,12 +1,10 @@
-// 27 NOV 2018 16:28z
+// 28 NOV 2018 09:02z
 
-// etrelle
+// telpodro
 
-#define DATENOW "Tue 27 Nov 2018  16:28z"
+#define DATENOW "Wed 28 Nov 2018  09:02z"
 #include "config.h"
 #include "src/periph/dotstar.h"
-extern void setup_dotstar();
-extern void loop_dotstar();
 
 /*
 Adafruit Arduino - Lesson 4. 8 LEDs and a Shift Register
@@ -25,62 +23,42 @@ byte pos = 15; // rightmost
 
 byte slew = 5;
 
-void setup(void) 
-{
-  setup_dotstar();
-
-  Serial.begin(9600);
-
-  // while(!Serial) {
-
-  for (int i = 4 ; i > 0 ; i--) {
-      loop_dotstar();
-  }
-
-  Serial.print(DATENOW);
-  pinMode(latchPin, OUTPUT);
-  pinMode(dataPin,  OUTPUT);  
-  pinMode(clockPin, OUTPUT);
-
-}
-
-void _digitSelect(void) {
-   uleds = pos;
-   shiftOut(dataPin, clockPin, MSBFIRST, uleds);
-}
-
-void _updateSR(void) {
-   digitalWrite(latchPin, LOW);
-
-   _digitSelect();
-   uleds = leds; // sequential digit
-   shiftOut(dataPin, clockPin, MSBFIRST, uleds);
-
-   digitalWrite(latchPin, HIGH);
-}
-
-void updateShiftRegister(void) {
-   // uleds = 0;     _updateSR();
-   uleds = leds;  _updateSR();
-}
-
 uint8_t ledval = 0;
 uint8_t oldval = 0;
 
-void unfunc(uint8_t ledval) {
-    int8_t i;
-    for (i=7; i>=0; i--) {
-        if (ledval &  (1 <<  (i)) ) {
-            // digitalWrite(sid, HIGH);
-            Serial.print("1");
-        } else {
-            // digitalWrite(sid, LOW);
-            Serial.print("0");
-        }
+void setup(void) {
+    setup_dotstar();
+
+    Serial.begin(9600);
+
+    // while(!Serial) {
+
+    for (int i = 4 ; i > 0 ; i--) {
+        loop_dotstar(); // 4th iteration turns off dostar
     }
-    Serial.print(" ~stanza~ ");
+    Serial.print(DATENOW);
+
+    pinMode(latchPin, OUTPUT);
+    pinMode(dataPin,  OUTPUT);
+    pinMode(clockPin, OUTPUT);
 }
 
+void _digitSelect(void) {
+    uleds = pos;
+    shiftOut(dataPin, clockPin, MSBFIRST, uleds);
+}
+
+void _updateSR(void) {
+    digitalWrite(latchPin, LOW);
+    _digitSelect();
+    uleds = leds; // sequential digit
+    shiftOut(dataPin, clockPin, MSBFIRST, uleds);
+    digitalWrite(latchPin, HIGH);
+}
+
+void updateShiftRegister(void) {
+    uleds = leds;  _updateSR();
+}
 
 void blankleds(void) {
     leds = 0;
@@ -90,235 +68,134 @@ void blankleds(void) {
 
 void setleds(void) {
     leds = ledval; updateShiftRegister();
-    delay(1); // CRITICAL - must be a finite, non-zero delay here
+    if (!EXPOSE_DIGIT_PAINTING) {
+        delay(1); // CRITICAL - must be a finite, non-zero delay here
+    } else {
+        delay(400);
+    }
 }
 
 void _puteye(void) {
-  if (EXPOSE_DIGIT_PAINTING) {
-      delay(122); // to expose digit change
-  }
-  setleds();
-  blankleds();
+    if (EXPOSE_DIGIT_PAINTING) {
+        // delay(122); // to expose digit change
+        delay(424); // to expose digit change
+    }
+    setleds();
+    blankleds();
 }
 
 void _outeye_zero(void) {
-  pos = 15 ; _puteye();
-
-/*
-  pos = 22 ; _puteye();
-  pos = 27 ; _puteye();
-  pos = 29 ; _puteye();
-*/
+    pos = 15 ; _puteye();
 }
 
 
 void _outeye_one(void) {
-/*
-  pos = 15 ; _puteye();
-*/
-
-  pos = 22 ; _puteye();
-
-/*
-  pos = 27 ; _puteye();
-  pos = 29 ; _puteye();
-*/
+    pos = 22 ; _puteye();
 }
 
 
 void _outeye_two(void) {
-/*
-  pos = 15 ; _puteye();
-  pos = 22 ; _puteye();
-*/
-
-  pos = 27 ; _puteye();
-
-/*
-  pos = 29 ; _puteye();
-*/
+    pos = 27 ; _puteye();
 }
-
 
 void _outeye_three(void) {
-/*
-  pos = 15 ; _puteye();
-  pos = 22 ; _puteye();
-  pos = 27 ; _puteye();
-*/
-  pos = 29 ; _puteye();
-
+   pos = 29 ; _puteye();
 }
 
-
 void outeye_zero(void) {
-    int duration = 2;
-    for (int i = duration; i>0; i--) {
+    for (int i = REPETITIONS ; i>0; i--) {
         _outeye_zero();
     }
 }
 
 void outeye_one(void) {
-    int duration = 2;
-    for (int i = duration; i>0; i--) {
+    for (int i = REPETITIONS ; i>0; i--) {
         _outeye_one();
     }
 }
 
 void outeye_two(void) {
-    int duration = 2;
-    for (int i = duration; i>0; i--) {
+    for (int i = REPETITIONS ; i>0; i--) {
         _outeye_two();
     }
 }
 
 void outeye_three(void) {
-    int duration = 2;
-    for (int i = duration; i>0; i--) {
+    for (int i = REPETITIONS ; i>0; i--) {
         _outeye_three();
     }
 }
 
-void dig_zero(void) {
-  int i = 0;
-
-  // 0 
-  i = 1 + 2 + 4 + 8 + 16 + 32 +  0 +   0;
-      ledval = i;
+void dig_zero(void) { // 0
+    ledval = 1 + 2 + 4 + 8 + 16 + 32 +  0 +   0;
 }
 
-void dig_one(void) {
-  int i = 0;
-
-  // 1
-  i = 0 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
-      // ledval = i; outeye();
-      ledval = i;
+void dig_one(void) { // 1
+    ledval = 0 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
 }
 
-void dig_two(void) {
-  int i = 0;
-
-  // 2     // 1 2 8 16 64
-  i = 1 + 2 + 0 + 8 + 16 +  0 + 64 +   0;
-      ledval = i;
+void dig_two(void) { // 2
+    ledval = 1 + 2 + 0 + 8 + 16 +  0 + 64 +   0;
 }
 
-
-void dig_three(void) {
-  int i = 0;
-
-  // 3
-  i = 1 + 2 + 4 + 8 +  0 +  0 + 64 +   0;
-      ledval = i;
+void dig_three(void) { // 3
+    ledval = 1 + 2 + 4 + 8 +  0 +  0 + 64 +   0;
 }
 
-
-void dig_four(void) {
-  int i = 0;
-
-  // 4   //  2 4 32 64
-  i = 0 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
-      ledval = i;
+void dig_four(void) { // 4
+    ledval = 0 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
 }
 
-void dig_five(void) {
-  int i = 0;
-
-  // 5   // like 2
-  i = 1 + 0 + 4 + 8 +  0 + 32 + 64 +   0;
-      ledval = i;
+void dig_five(void) { // 5
+    ledval = 1 + 0 + 4 + 8 +  0 + 32 + 64 +   0;
 }
 
-
-void dig_six(void) {
-  int i = 0;
-
-  // 6
-  i = 1 + 0 + 4 + 8 + 16 + 32 + 64 +   0;
-      ledval = i;
+void dig_six(void) { // 6
+    ledval = 1 + 0 + 4 + 8 + 16 + 32 + 64 +   0;
 }
 
-void dig_seven(void) {
-  int i = 0;
-  // 7
-  i = 1 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
-      ledval = i;
+void dig_seven(void) { // 7
+    ledval = 1 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
 }
 
-
-
-void dig_eight(void) {
-  int i = 0;
-
-  // 8
-  i = 1 + 2 + 4 + 8 + 16 + 32 + 64 +   0;
-      ledval = i;
+void dig_eight(void) { // 8
+    ledval = 1 + 2 + 4 + 8 + 16 + 32 + 64 +   0;
 }
 
-
-void dig_nine(void) {
-  int i = 0;
-  // 9
-  i = 1 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
-      ledval = i;
+void dig_nine(void) { // 9
+    ledval = 1 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
 }
 
-
-void ltr_l(void) {
-  int i = 0;
-  // L
-  i = 0 + 0 + 0 + 8 + 16 + 32 +  0 +   0;
-      ledval = i;
+void ltr_l(void) { // L
+    ledval = 0 + 0 + 0 + 8 + 16 + 32 +  0 +   0;
 }
 
-void ltr_a(void) { // the letter, A
-  int i = 0;
-  // A
-  i = 1 + 2 + 4 + 16 + 32 + 64;
-      ledval = i;
+void ltr_a(void) { // A -- the letter, A
+    ledval = 1 + 2 + 4 + 16 + 32 + 64;
 }
 
-void ltr_b(void) {
-  int i = 0;
-  // b
-  i = 4 + 8 + 16 + 32 + 64;
-      ledval = i;
+void ltr_b(void) { // b
+    ledval = 4 + 8 + 16 + 32 + 64;
 }
 
-void ltr_c(void) {
-  int i = 0;
-  // C
-  i = 1 + 8 + 16 + 32;
-      ledval = i;
+void ltr_c(void) { // C
+    ledval = 1 + 8 + 16 + 32;
 }
 
-void ltr_d(void) {
-  int i = 0;
-  // d
-  i = 2 + 4 + 8 + 16 + 64;
-      ledval = i;
+void ltr_d(void) { // d
+    ledval = 2 + 4 + 8 + 16 + 64;
 }
 
-void ltr_e(void) {
-  int i = 0;
-  // E
-  i = 1 + 8 + 16 + 32 + 64;
-      ledval = i;
+void ltr_e(void) { // E
+    ledval = 1 + 8 + 16 + 32 + 64;
 }
 
-void ltr_f(void) {
-  int i = 0;
-  // F
-  i = 1 + 0 + 16 + 32 + 64;
-      ledval = i;
+void ltr_f(void) { // F
+    ledval = 1 + 0 + 16 + 32 + 64;
 }
 
-void ltr_blank(void) {
-  int i = 0;
-  // blank
-  i = 0 ;
-      ledval = i;
+void ltr_blank(void) { // blank
+    ledval = 0 ;
 }
 
 
@@ -338,7 +215,7 @@ void loop(void)
 
   // message: '3223'
   for (int j = 2;  j>0; j--) { // for loops provide duration
-      for (int k = 255; k>0; k--) {
+      for (int k = DURATION; k>0; k--) {
           dig_three(); outeye_zero();
           dig_two(); outeye_one();
           dig_two(); outeye_two();
@@ -350,7 +227,7 @@ void loop(void)
 
   // message:  'A824'
   for (int j = 2;  j>0; j--) {
-      for (int k = 255; k>0; k--) {
+      for (int k = DURATION; k>0; k--) {
           dig_four();   outeye_zero();
           dig_two();    outeye_one();
           dig_eight();  outeye_two();
@@ -363,7 +240,7 @@ void loop(void)
 
   // message:  'LE  '
   for (int j = 2;  j>0; j--) {
-      for (int k = 255; k>0; k--) {
+      for (int k = DURATION; k>0; k--) {
           ltr_blank();   outeye_zero();
           ltr_blank();  outeye_one();
           ltr_e();      outeye_two();
@@ -377,7 +254,7 @@ void loop(void)
   // message: 'F0CA'
 
   for (int j = 2;  j>0; j--) {
-      for (int k = 255; k>0; k--) {
+      for (int k = DURATION; k>0; k--) {
           ltr_a();     outeye_zero();
           ltr_c();     outeye_one(); 
           dig_zero();     outeye_two();
@@ -394,7 +271,7 @@ void loop(void)
   // message: 'CAFE'
 
   for (int j = 2;  j>0; j--) {
-      for (int k = 255; k>0; k--) {
+      for (int k = DURATION; k>0; k--) {
           ltr_e();     outeye_zero();
           ltr_f();     outeye_one();
           ltr_a();     outeye_two();
@@ -421,4 +298,4 @@ void loop(void)
 /*
 #define EXPOSE_DIGIT_PAINTING -1
 */
-#define EXPOSE_DIGIT_PAINTING  0
+// #define EXPOSE_DIGIT_PAINTING  0
