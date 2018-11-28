@@ -82,45 +82,27 @@ void flash_digit(void) {
     blankleds();
 }
 
-void _outeye_zero(void) {
-    pos = 15 ; flash_digit();
-}
-
-
-void _outeye_one(void) {
-    pos = 22 ; flash_digit();
-}
-
-
-void _outeye_two(void) {
-    pos = 27 ; flash_digit();
-}
-
-void _outeye_three(void) {
-   pos = 29 ; flash_digit();
-}
-
-void outeye_zero(void) {
+void in_column_zero(void) {
     for (int i = REPETITIONS ; i>0; i--) {
-        _outeye_zero();
+        pos = 15 ; flash_digit();
     }
 }
 
-void outeye_one(void) {
+void in_column_one(void) {
     for (int i = REPETITIONS ; i>0; i--) {
-        _outeye_one();
+        pos = 22 ; flash_digit();
     }
 }
 
-void outeye_two(void) {
+void in_column_two(void) {
     for (int i = REPETITIONS ; i>0; i--) {
-        _outeye_two();
+        pos = 27 ; flash_digit();
     }
 }
 
-void outeye_three(void) {
+void in_column_three(void) {
     for (int i = REPETITIONS ; i>0; i--) {
-        _outeye_three();
+       pos = 29 ; flash_digit();
     }
 }
 
@@ -207,10 +189,10 @@ void loop(void) {
     // message: '3223'
     for (int j = 2;  j>0; j--) {
         for (int k = DURATION; k>0; k--) {
-            encode_three();  outeye_zero();   // print '3' in column '0'
-            encode_two();    outeye_one();    // print '2' in column '1'
-            encode_two();    outeye_two();    // print '2' in column '2'
-            encode_three();  outeye_three();  // print '3' in column '3'
+            encode_three();  in_column_zero();   // print '3' in column '0'
+            encode_two();    in_column_one();    // print '2' in column '1'
+            encode_two();    in_column_two();    // print '2' in column '2'
+            encode_three();  in_column_three();  // print '3' in column '3'
         }
     }
 
@@ -219,10 +201,10 @@ void loop(void) {
   // message:  'A824'
   for (int j = 2;  j>0; j--) {
       for (int k = DURATION; k>0; k--) {
-          encode_four();   outeye_zero();
-          encode_two();    outeye_one();
-          encode_eight();  outeye_two();
-          encode_ltr_a();      outeye_three();
+          encode_four();   in_column_zero();
+          encode_two();    in_column_one();
+          encode_eight();  in_column_two();
+          encode_ltr_a();      in_column_three();
       }
   }
 
@@ -232,10 +214,10 @@ void loop(void) {
   // message:  'LE  '
   for (int j = 2;  j>0; j--) {
       for (int k = DURATION; k>0; k--) {
-          encode_ltr_blank();   outeye_zero();
-          encode_ltr_blank();  outeye_one();
-          encode_ltr_e();      outeye_two();
-          encode_ltr_l();      outeye_three();
+          encode_ltr_blank();   in_column_zero();
+          encode_ltr_blank();  in_column_one();
+          encode_ltr_e();      in_column_two();
+          encode_ltr_l();      in_column_three();
       }
   }
 
@@ -246,10 +228,10 @@ void loop(void) {
 
   for (int j = 2;  j>0; j--) {
       for (int k = DURATION; k>0; k--) {
-          encode_ltr_a();     outeye_zero();
-          encode_ltr_c();     outeye_one(); 
-          encode_zero();     outeye_two();
-          encode_ltr_f();     outeye_three();
+          encode_ltr_a();     in_column_zero();
+          encode_ltr_c();     in_column_one(); 
+          encode_zero();     in_column_two();
+          encode_ltr_f();     in_column_three();
       }
   }
 
@@ -263,10 +245,10 @@ void loop(void) {
 
   for (int j = 2;  j>0; j--) {
       for (int k = DURATION; k>0; k--) {
-          encode_ltr_e();     outeye_zero();
-          encode_ltr_f();     outeye_one();
-          encode_ltr_a();     outeye_two();
-          encode_ltr_c();     outeye_three();
+          encode_ltr_e();     in_column_zero();
+          encode_ltr_f();     in_column_one();
+          encode_ltr_a();     in_column_two();
+          encode_ltr_c();     in_column_three();
       }
   }
 
@@ -276,11 +258,11 @@ void loop(void) {
   i = 0;
 
   // hold display blank for a while:
-  i = 128; ledval = i; outeye_zero(); blankleds();
+  i = 128; ledval = i; in_column_zero(); blankleds();
       delay(111 + slew);
 
   // hold display blank for even a bit longer:
-  i = 128; ledval = i; outeye_zero(); blankleds();
+  i = 128; ledval = i; in_column_zero(); blankleds();
       delay(111 + slew);
 
 }
