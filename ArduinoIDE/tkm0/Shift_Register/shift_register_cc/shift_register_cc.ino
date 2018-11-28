@@ -8,8 +8,7 @@
 
 /*
 Adafruit Arduino - Lesson 4. 8 LEDs and a Shift Register
-Simon Monk
-mods: Christopher W Hafey, wa1tnr  27 November 2018
+Simon Monk mods: Christopher W Hafey, wa1tnr  27 November 2018
 */
 
 // Trinket M0
@@ -24,7 +23,6 @@ byte pos = 15; // rightmost
 byte slew = 5;
 
 uint8_t ledval = 0;
-uint8_t oldval = 0;
 
 void setup(void) {
     setup_dotstar();
@@ -126,112 +124,105 @@ void outeye_three(void) {
     }
 }
 
-void dig_zero(void) { // 0
+void encode_zero(void) { // 0
     ledval = 1 + 2 + 4 + 8 + 16 + 32 +  0 +   0;
 }
 
-void dig_one(void) { // 1
+void encode_one(void) { // 1
     ledval = 0 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
 }
 
-void dig_two(void) { // 2
+void encode_two(void) { // 2
     ledval = 1 + 2 + 0 + 8 + 16 +  0 + 64 +   0;
 }
 
-void dig_three(void) { // 3
+void encode_three(void) { // 3
     ledval = 1 + 2 + 4 + 8 +  0 +  0 + 64 +   0;
 }
 
-void dig_four(void) { // 4
+void encode_four(void) { // 4
     ledval = 0 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
 }
 
-void dig_five(void) { // 5
+void encode_five(void) { // 5
     ledval = 1 + 0 + 4 + 8 +  0 + 32 + 64 +   0;
 }
 
-void dig_six(void) { // 6
+void encode_six(void) { // 6
     ledval = 1 + 0 + 4 + 8 + 16 + 32 + 64 +   0;
 }
 
-void dig_seven(void) { // 7
+void encode_seven(void) { // 7
     ledval = 1 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
 }
 
-void dig_eight(void) { // 8
+void encode_eight(void) { // 8
     ledval = 1 + 2 + 4 + 8 + 16 + 32 + 64 +   0;
 }
 
-void dig_nine(void) { // 9
+void encode_nine(void) { // 9
     ledval = 1 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
 }
 
-void ltr_l(void) { // L
+void encode_ltr_l(void) { // L
     ledval = 0 + 0 + 0 + 8 + 16 + 32 +  0 +   0;
 }
 
-void ltr_a(void) { // A -- the letter, A
+void encode_ltr_a(void) { // A -- the letter, A
     ledval = 1 + 2 + 4 + 16 + 32 + 64;
 }
 
-void ltr_b(void) { // b
+void encode_ltr_b(void) { // b
     ledval = 4 + 8 + 16 + 32 + 64;
 }
 
-void ltr_c(void) { // C
+void encode_ltr_c(void) { // C
     ledval = 1 + 8 + 16 + 32;
 }
 
-void ltr_d(void) { // d
+void encode_ltr_d(void) { // d
     ledval = 2 + 4 + 8 + 16 + 64;
 }
 
-void ltr_e(void) { // E
+void encode_ltr_e(void) { // E
     ledval = 1 + 8 + 16 + 32 + 64;
 }
 
-void ltr_f(void) { // F
+void encode_ltr_f(void) { // F
     ledval = 1 + 0 + 16 + 32 + 64;
 }
 
-void ltr_blank(void) { // blank
+void encode_ltr_blank(void) { // blank
     ledval = 0 ;
 }
 
 
+void loop(void) {
+    blankleds();
+    delay(40);
+    ledval = 0;
+    int i = 0;
+    delay(1000);
 
-void loop(void) 
-{
-  blankleds();
-  delay(40);
+    // message: '3223'
+    for (int j = 2;  j>0; j--) {
+        for (int k = DURATION; k>0; k--) {
+            encode_three();  outeye_zero();   // print '3' in column '0'
+            encode_two();    outeye_one();    // print '2' in column '1'
+            encode_two();    outeye_two();    // print '2' in column '2'
+            encode_three();  outeye_three();  // print '3' in column '3'
+        }
+    }
 
-  ledval = 0;
-  oldval = 0;
-
-  int i = 0;
-
-
-  delay(1000);
-
-  // message: '3223'
-  for (int j = 2;  j>0; j--) { // for loops provide duration
-      for (int k = DURATION; k>0; k--) {
-          dig_three(); outeye_zero();
-          dig_two(); outeye_one();
-          dig_two(); outeye_two();
-          dig_three(); outeye_three();
-      }
-  }
-
-  delay(1000);
+    delay(1000);
 
   // message:  'A824'
   for (int j = 2;  j>0; j--) {
       for (int k = DURATION; k>0; k--) {
-          dig_four();   outeye_zero();
-          dig_two();    outeye_one();
-          dig_eight();  outeye_two();
-          ltr_a();      outeye_three();
+          encode_four();   outeye_zero();
+          encode_two();    outeye_one();
+          encode_eight();  outeye_two();
+          encode_ltr_a();      outeye_three();
       }
   }
 
@@ -241,10 +232,10 @@ void loop(void)
   // message:  'LE  '
   for (int j = 2;  j>0; j--) {
       for (int k = DURATION; k>0; k--) {
-          ltr_blank();   outeye_zero();
-          ltr_blank();  outeye_one();
-          ltr_e();      outeye_two();
-          ltr_l();      outeye_three();
+          encode_ltr_blank();   outeye_zero();
+          encode_ltr_blank();  outeye_one();
+          encode_ltr_e();      outeye_two();
+          encode_ltr_l();      outeye_three();
       }
   }
 
@@ -255,10 +246,10 @@ void loop(void)
 
   for (int j = 2;  j>0; j--) {
       for (int k = DURATION; k>0; k--) {
-          ltr_a();     outeye_zero();
-          ltr_c();     outeye_one(); 
-          dig_zero();     outeye_two();
-          ltr_f();     outeye_three();
+          encode_ltr_a();     outeye_zero();
+          encode_ltr_c();     outeye_one(); 
+          encode_zero();     outeye_two();
+          encode_ltr_f();     outeye_three();
       }
   }
 
@@ -272,10 +263,10 @@ void loop(void)
 
   for (int j = 2;  j>0; j--) {
       for (int k = DURATION; k>0; k--) {
-          ltr_e();     outeye_zero();
-          ltr_f();     outeye_one();
-          ltr_a();     outeye_two();
-          ltr_c();     outeye_three();
+          encode_ltr_e();     outeye_zero();
+          encode_ltr_f();     outeye_one();
+          encode_ltr_a();     outeye_two();
+          encode_ltr_c();     outeye_three();
       }
   }
 
