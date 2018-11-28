@@ -1,8 +1,8 @@
-// 28 NOV 2018 09:02z
+// Wed Nov 28 09:52:54 UTC 2018
 
 // finpaflik
 
-#define DATENOW "Wed 28 Nov 2018  09:02z"
+#define DATENOW     "Wed Nov 28 09:52:54 UTC 2018"
 #include "config.h"
 #include "src/periph/dotstar.h"
 
@@ -62,7 +62,6 @@ void blankleds(void) {
     updateShiftRegister();
 }
 
-
 void setleds(void) {
     leds = ledval;
     updateShiftRegister();
@@ -73,13 +72,13 @@ void setleds(void) {
     }
 }
 
-void flash_digit(void) {
+void flash_digit(void) { // paint a single digit brightly, then immediately blank all LEDs
     if (EXPOSE_DIGIT_PAINTING) {
-        // delay(122); // to expose digit change
+        // delay(122);
         delay(424); // to expose digit change
     }
     setleds();
-    blankleds();
+    blankleds(); // waste no time in doing so!
 }
 
 void in_column_zero(void) {
@@ -189,6 +188,7 @@ void loop(void) {
     // message: '3223'
     for (int j = 2;  j>0; j--) {
         for (int k = DURATION; k>0; k--) {
+            //  columns 3 2 1 0  -- painted right to left!
             encode_three();  in_column_zero();   // print '3' in column '0'
             encode_two();    in_column_one();    // print '2' in column '1'
             encode_two();    in_column_two();    // print '2' in column '2'
@@ -198,59 +198,53 @@ void loop(void) {
 
     delay(1000);
 
-  // message:  'A824'
-  for (int j = 2;  j>0; j--) {
-      for (int k = DURATION; k>0; k--) {
-          encode_four();   in_column_zero();
-          encode_two();    in_column_one();
-          encode_eight();  in_column_two();
-          encode_ltr_a();      in_column_three();
-      }
-  }
+    // message:  'A824'
+    for (int j = 2;  j>0; j--) {
+        for (int k = DURATION; k>0; k--) {
+            encode_four();   in_column_zero();
+            encode_two();    in_column_one();
+            encode_eight();  in_column_two();
+            encode_ltr_a();  in_column_three();
+        }
+    }
 
+    delay(1000);
 
-  delay(1000);
+    // message:  'LE  '
+    for (int j = 2;  j>0; j--) {
+        for (int k = DURATION; k>0; k--) {
+            encode_ltr_blank();  in_column_zero();
+            encode_ltr_blank();  in_column_one();
+            encode_ltr_e();      in_column_two();
+            encode_ltr_l();      in_column_three();
+        }
+    }
 
-  // message:  'LE  '
-  for (int j = 2;  j>0; j--) {
-      for (int k = DURATION; k>0; k--) {
-          encode_ltr_blank();   in_column_zero();
-          encode_ltr_blank();  in_column_one();
-          encode_ltr_e();      in_column_two();
-          encode_ltr_l();      in_column_three();
-      }
-  }
+    delay(1000);
 
+    // message: 'F0CA'
 
-  delay(1000);
+    for (int j = 2;  j>0; j--) {
+        for (int k = DURATION; k>0; k--) {
+            encode_ltr_a();  in_column_zero();
+            encode_ltr_c();  in_column_one(); 
+            encode_zero();   in_column_two();
+            encode_ltr_f();  in_column_three();
+        }
+    }
 
-  // message: 'F0CA'
+    delay(1000);
 
-  for (int j = 2;  j>0; j--) {
-      for (int k = DURATION; k>0; k--) {
-          encode_ltr_a();     in_column_zero();
-          encode_ltr_c();     in_column_one(); 
-          encode_zero();     in_column_two();
-          encode_ltr_f();     in_column_three();
-      }
-  }
+    // message: 'CAFE'
 
-
-
-
-
-  delay(1000);
-
-  // message: 'CAFE'
-
-  for (int j = 2;  j>0; j--) {
-      for (int k = DURATION; k>0; k--) {
-          encode_ltr_e();     in_column_zero();
-          encode_ltr_f();     in_column_one();
-          encode_ltr_a();     in_column_two();
-          encode_ltr_c();     in_column_three();
-      }
-  }
+    for (int j = 2;  j>0; j--) {
+        for (int k = DURATION; k>0; k--) {
+            encode_ltr_e();  in_column_zero();
+            encode_ltr_f();  in_column_one();
+            encode_ltr_a();  in_column_two();
+            encode_ltr_c();  in_column_three();
+        }
+    }
 
 
 
