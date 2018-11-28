@@ -105,15 +105,17 @@ void in_column_three(void) {
     }
 }
 
-void encode_zero(void) { // 0
+// encodings - use powers of two added together, to show a 7-segment glyph
+
+void encode_zero(void) {  // 0
     ledval = 1 + 2 + 4 + 8 + 16 + 32 +  0 +   0;
 }
 
-void encode_one(void) { // 1
+void encode_one(void) {   // 1
     ledval = 0 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
 }
 
-void encode_two(void) { // 2
+void encode_two(void) {   // 2
     ledval = 1 + 2 + 0 + 8 + 16 +  0 + 64 +   0;
 }
 
@@ -121,15 +123,15 @@ void encode_three(void) { // 3
     ledval = 1 + 2 + 4 + 8 +  0 +  0 + 64 +   0;
 }
 
-void encode_four(void) { // 4
+void encode_four(void) {  // 4
     ledval = 0 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
 }
 
-void encode_five(void) { // 5
+void encode_five(void) {  // 5
     ledval = 1 + 0 + 4 + 8 +  0 + 32 + 64 +   0;
 }
 
-void encode_six(void) { // 6
+void encode_six(void) {   // 6
     ledval = 1 + 0 + 4 + 8 + 16 + 32 + 64 +   0;
 }
 
@@ -141,7 +143,7 @@ void encode_eight(void) { // 8
     ledval = 1 + 2 + 4 + 8 + 16 + 32 + 64 +   0;
 }
 
-void encode_nine(void) { // 9
+void encode_nine(void) {  // 9
     ledval = 1 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
 }
 
@@ -178,14 +180,21 @@ void encode_ltr_blank(void) { // blank
 }
 
 
-void loop(void) {
-    blankleds();
-    delay(40);
-    ledval = 0;
-    int i = 0;
-    delay(1000);
+// detailed messages to show on the 7-segment, 4-digit LED display:
 
-    // message: '3223'
+void msg_a_24(void) { // message:  'A824'
+    for (int j = 2;  j>0; j--) {
+        for (int k = DURATION; k>0; k--) {
+            encode_four();   in_column_zero();
+            encode_two();    in_column_one();
+            encode_eight();  in_column_two();
+            encode_ltr_a();  in_column_three();
+        }
+    }
+    delay(1000);
+}
+
+void msg_tttt(void) { // message: '3223'
     for (int j = 2;  j>0; j--) {
         for (int k = DURATION; k>0; k--) {
             //  columns 3 2 1 0  -- painted right to left!
@@ -195,22 +204,10 @@ void loop(void) {
             encode_three();  in_column_three();  // print '3' in column '3'
         }
     }
-
     delay(1000);
+}
 
-    // message:  'A824'
-    for (int j = 2;  j>0; j--) {
-        for (int k = DURATION; k>0; k--) {
-            encode_four();   in_column_zero();
-            encode_two();    in_column_one();
-            encode_eight();  in_column_two();
-            encode_ltr_a();  in_column_three();
-        }
-    }
-
-    delay(1000);
-
-    // message:  'LE  '
+void msg_le(void) { // message:  'LE  '
     for (int j = 2;  j>0; j--) {
         for (int k = DURATION; k>0; k--) {
             encode_ltr_blank();  in_column_zero();
@@ -219,11 +216,10 @@ void loop(void) {
             encode_ltr_l();      in_column_three();
         }
     }
-
     delay(1000);
+}
 
-    // message: 'F0CA'
-
+void msg_foca(void) { // message: 'F0CA'
     for (int j = 2;  j>0; j--) {
         for (int k = DURATION; k>0; k--) {
             encode_ltr_a();  in_column_zero();
@@ -232,11 +228,10 @@ void loop(void) {
             encode_ltr_f();  in_column_three();
         }
     }
-
     delay(1000);
+}
 
-    // message: 'CAFE'
-
+void msg_cafe(void) { // message: 'CAFE'
     for (int j = 2;  j>0; j--) {
         for (int k = DURATION; k>0; k--) {
             encode_ltr_e();  in_column_zero();
@@ -245,24 +240,25 @@ void loop(void) {
             encode_ltr_c();  in_column_three();
         }
     }
-
-
-
-  i = 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128;
-  i = 0;
-
-  // hold display blank for a while:
-  i = 128; ledval = i; in_column_zero(); blankleds();
-      delay(111 + slew);
-
-  // hold display blank for even a bit longer:
-  i = 128; ledval = i; in_column_zero(); blankleds();
-      delay(111 + slew);
-
+    delay(1000);
 }
 
 
-/*
-#define EXPOSE_DIGIT_PAINTING -1
-*/
-// #define EXPOSE_DIGIT_PAINTING  0
+
+void loop(void) {
+    blankleds();
+    delay(40);
+    ledval = 0;
+    int i = 0;
+    delay(1000);
+
+    msg_tttt();
+    msg_a_24();
+    msg_le(); msg_foca(); msg_cafe();
+
+    // hold display blank for a while:
+    i = 128; ledval = i; in_column_zero(); blankleds();
+    delay(2 * (111 + slew));
+}
+
+// END.
