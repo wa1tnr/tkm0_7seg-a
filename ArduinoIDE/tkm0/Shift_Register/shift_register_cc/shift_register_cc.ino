@@ -1,5 +1,5 @@
 // Refresh:
-// Sat Apr 27 22:07:44 UTC 2019
+// Sat Apr 27 22:25:53 UTC 2019
 
 // jeppifebbarkidia
 
@@ -14,7 +14,7 @@
 
 /*
 Adafruit Arduino - Lesson 4. 8 LEDs and a Shift Register
-Simon Monk mods: Christopher W Hafey, wa1tnr  27 November 2018
+Simon Monk mods: wa1tnr  27 November 2018
 */
 
 // Trinket M0
@@ -225,6 +225,18 @@ void msg_le(void) { // message:  'LE  '
     delay(1000);
 }
 
+void msg_bef0(void) { // message: 'bEF0'
+    for (int j = 2;  j>0; j--) {
+        for (int k = DURATION; k>0; k--) {
+            encode_zero();   in_column_zero();
+            encode_ltr_f();  in_column_one();
+            encode_ltr_e();  in_column_two();
+            encode_ltr_b();  in_column_three();
+        }
+    }
+    delay(1000);
+}
+
 void msg_foca(void) { // message: 'F0CA'
     for (int j = 2;  j>0; j--) {
         for (int k = DURATION; k>0; k--) {
@@ -261,6 +273,7 @@ void loop(void) {
     msg_tttt();
     msg_a_24();
     msg_le(); msg_foca(); msg_cafe();
+    msg_bef0();
 
     // hold display blank for a while:
     i = 128; ledval = i; in_column_zero(); blankleds();
